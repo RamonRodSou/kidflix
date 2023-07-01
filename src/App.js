@@ -1,14 +1,16 @@
 import './App.css';
-import { Banner } from './Banner/Banner';
-import { InicialNav } from './Header/Header';
-import { Navegacao } from './NavPrincipal/NavPrincipal';
+import Categoria from './Categoria/Categoria';
+import Footer from './Footer/Footer';
+import { Homer } from './Homer/Homer';
 
 function App() {
   return (
-    <>
-      <InicialNav/>
-      <Navegacao/>
-      <Banner/>
+    <> 
+      <Homer/>
+      <Categoria/>
+      <Categoria/>
+      <Categoria/>
+      <Footer/>
     </>
 
   );

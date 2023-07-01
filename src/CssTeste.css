@@ -1,7 +1,15 @@
 nav {
 
 
-position: absolute;
+position: relative;
 z-index: 1;
-
+text-shadow: 2px 2px 5px black;
+width: 100vw;
+flex-direction: column;
+color: #ffffff;
+font-size: medium;
+font-weight: 600;
+font-stretch: normal;
+border-radius: 2px;
+display: flex;
 }

@@ -1,16 +1,16 @@
 import React from 'react';
-import { styled } from 'styled-components';
 import LogoImg from './Logo.jpeg'
+import { styled } from 'styled-components';
 
-const LogoIncicial = styled.img`
+export function LogoPrincipal  ({ className }) {
 
-  width: 50px;
-  height:50px;
-  @media (max-width: 768px) {
-
-  }
+  const LogoSt = styled.img`
+  margin:0 0.5rem;
+  flex-grow:-1;
 `;
-export function LogoPrincipal  () {
   return (
-    <LogoIncicial  src={LogoImg} alt={LogoImg}/>
+    <LogoSt                            
+      className= {className} 
+      src={LogoImg} 
+      alt={LogoImg}/>
   )}

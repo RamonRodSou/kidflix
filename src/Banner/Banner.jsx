@@ -1,19 +1,19 @@
 import { styled } from "styled-components";
+import "./Banner.css"
 import ImgBanner from "../Banner/Banner.jpg";
 import React from "react";
 import { LogoPrincipal } from "../Logo/Logo";
 
 
 const VideoBanner = styled.div`
-    position: absolute;
-    top:0;
+
     z-index: -1;
 
 `;
 
 const BannerInicial = styled.img`
     width: 100vw;
-    height:50vh;
+    height:40vh;
 
     @media (min-width: 768px) {
 
@@ -25,13 +25,26 @@ const BannerInicial = styled.img`
 const LogoMeio = styled.div`
 
     position: absolute;
-    top:80%;
+    top:32vh;
+    z-index: 1;
+
+    color: #ffffff;
+    text-shadow: 2px 3px 5px black;
     display:flex;
+    align-items: center;
+    gap:0.5rem;
+
     left:50%;
     margin-left:-40px;
+`;
+  
+
+const Titulo = styled.p`
+
+    text-shadow: 2px 3px 5px black;
+    font-weight: 400;
 
 `;
-
 
 export function Banner () {
 
@@ -39,8 +52,10 @@ export function Banner () {
         <VideoBanner>
             <BannerInicial src={ImgBanner} alt={ImgBanner}/>
             <LogoMeio>
-                <LogoPrincipal/>
-                <p>Desenhos</p>
+                <LogoPrincipal
+                    className="LogoBannerCss"
+                />
+                <Titulo>Desenhos</Titulo>
             </LogoMeio>
 
         </VideoBanner>
