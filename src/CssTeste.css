@@ -11,5 +11,10 @@ font-size: medium;
 font-weight: 600;
 font-stretch: normal;
 border-radius: 2px;
+
 display: flex;
+text-align: center;
+justify-content: space-around;
+background-color: #ffffff00;
+
 }

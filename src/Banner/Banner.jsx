@@ -3,17 +3,19 @@ import "./Banner.css"
 import ImgBanner from "../Banner/Banner.jpg";
 import React from "react";
 import { LogoPrincipal } from "../Logo/Logo";
+import { Outlet } from "react-router-dom";
 
 
-const VideoBanner = styled.div`
-
-    z-index: -1;
+const VideoBanner = styled.section`
 
 `;
 
 const BannerInicial = styled.img`
-    width: 100vw;
-    height:40vh;
+
+    width:100%;
+    height:calc(100% - 65px);
+    word-wrap:break-word;
+
 
     @media (min-width: 768px) {
 
@@ -24,25 +26,21 @@ const BannerInicial = styled.img`
 
 const LogoMeio = styled.div`
 
-    position: absolute;
-    top:32vh;
-    z-index: 1;
-
+    position: relative;
+    top:-2.5rem;
     color: #ffffff;
     text-shadow: 2px 3px 5px black;
     display:flex;
     align-items: center;
-    gap:0.5rem;
-
-    left:50%;
-    margin-left:-40px;
+    justify-content: center;
+    
 `;
   
 
 const Titulo = styled.p`
 
     text-shadow: 2px 3px 5px black;
-    font-weight: 400;
+    margin:0;
 
 `;
 
@@ -57,7 +55,7 @@ export function Banner () {
                 />
                 <Titulo>Desenhos</Titulo>
             </LogoMeio>
-
+            <Outlet/>
         </VideoBanner>
     )
 }

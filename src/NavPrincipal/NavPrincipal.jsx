@@ -1,16 +1,15 @@
 import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
-
-const UlPrincipal = styled.ul`
+import LinkNav from "../LinkNav/LinkNav";
+const UlPrincipal = styled.nav`
 
     display: flex;
     align-items: center;
-
     text-shadow: 2px 3px 5px black; 
     flex-grow:1;
-
+    justify-content: space-between;
+    
 
 @media (min-width: 768px) {
 
@@ -18,29 +17,24 @@ const UlPrincipal = styled.ul`
 
 `;
 
-const LinkNav = styled.li`
-  width: 100%;
-  cursor:pointer;  
-  list-style-type: none;
-  text-align: center;
-`;
-
 export function Navegacao  () {
   return (
-    <BrowserRouter>
+
       <UlPrincipal>
-        <LinkNav><Link style={{ color: "#ffffff", textDecoration: "inherit", textShadow: "2px 3px 5px black",}} to="/desenho">Desenho</Link></LinkNav>
-        <LinkNav><Link style={{ color: "#ffffff", textDecoration: "inherit", textShadow: "2px 3px 5px black",}} to="/filme">Filme</Link></LinkNav>
-        <LinkNav><Link style={{ color: "#ffffff", textDecoration: "inherit", textShadow: "2px 3px 5px black",}} to="/musicas">Musica</Link></LinkNav>
-        <LinkNav><Link style={{ color: "#ffffff", 
+        <LinkNav to="/desenho">Desenho</LinkNav>
+        <LinkNav to="/filme">Filme</LinkNav>
+        <LinkNav to="/musica">Musica</LinkNav>
+
+        <Link style={{ color: "#ffffff", 
                                 textDecoration: "inherit", 
                                 boxShadow: "2px 3px 5px #111111", 
                                 backgroundColor: "#FF0000", 
                                 padding: "0.3rem",
                                 borderRadius:"4px",
+                                margin:"0 0.5rem"
                                 }} 
-                  to="/addvideo">Add</Link></LinkNav>
+                  to="/addvideo" >Add</Link>
 
-      </UlPrincipal>
-    </BrowserRouter>
+      </UlPrincipal> 
+    
   )}
