@@ -1,3 +1,4 @@
+import ModalComp from "../components/ModalComp";
 
 export default function CadastraProduto () {
 

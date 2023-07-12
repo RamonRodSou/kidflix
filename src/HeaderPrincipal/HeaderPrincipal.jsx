@@ -22,8 +22,7 @@ export default function HeaderPrincipal() {
     <InicioNav>
       <Link
         to="/" 
-          style={{  margin:"0", height:"50px", width:"50px",margin:"0 0.5rem",
-                    
+          style={{height:"50px", width:"50px",margin:"0 0.5rem",                 
                 }
           }>
         <LogoPrincipal 

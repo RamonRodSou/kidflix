@@ -2,6 +2,8 @@ import styled from "styled-components";
 import React from "react";
 import { Link } from "react-router-dom";
 import LinkNav from "../LinkNav/LinkNav";
+import { ChakraProvider } from "@chakra-ui/react";
+import AddVideo from "../AddVideo/AddVideo";
 const UlPrincipal = styled.nav`
 
     display: flex;
@@ -24,16 +26,9 @@ export function Navegacao  () {
         <LinkNav to="/desenho">Desenho</LinkNav>
         <LinkNav to="/filme">Filme</LinkNav>
         <LinkNav to="/musica">Musica</LinkNav>
-
-        <Link style={{ color: "#ffffff", 
-                                textDecoration: "inherit", 
-                                boxShadow: "2px 3px 5px #111111", 
-                                backgroundColor: "#FF0000", 
-                                padding: "0.3rem",
-                                borderRadius:"4px",
-                                margin:"0 0.5rem"
-                                }} 
-                  to="/addvideo" >Add</Link>
+        <ChakraProvider>
+          <AddVideo/>
+        </ChakraProvider>
 
       </UlPrincipal> 
     

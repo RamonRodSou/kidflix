@@ -27,7 +27,8 @@ const BannerInicial = styled.img`
 const LogoMeio = styled.div`
 
     position: relative;
-    top:-2.5rem;
+    height: 0;
+    top:-1.5rem;
     color: #ffffff;
     text-shadow: 2px 3px 5px black;
     display:flex;

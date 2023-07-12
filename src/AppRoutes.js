@@ -6,9 +6,12 @@ import HeaderPrincipal from "./HeaderPrincipal/HeaderPrincipal";
 import { Banner } from "./Banner/Banner";
 import CadastraProduto from "./Cadastro_Produto/CadastroProduto";
 import Categoria from "./Categoria/Categoria";
+import { ChakraProvider } from "@chakra-ui/react";
+import AddVideo from "./AddVideo/AddVideo";
 
 export default function AppRoutes() {
   return (
+    
     <BrowserRouter>
       <HeaderPrincipal/>
 
@@ -16,8 +19,6 @@ export default function AppRoutes() {
         <Route path="/" element={<Banner/>}>
           
           <Route path="/" element={<Categoria/>}/>
-          <Route path="/addvideo" element={<CadastraProduto/>}/> 
-
         </Route>
 
       </Routes>
