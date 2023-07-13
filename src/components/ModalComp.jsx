@@ -13,38 +13,16 @@ import {    Modal,
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-export default function ModalComp ({data,setData,dataEdit,isOpen,onClose}) {
+export default function ModalComp ({dataEdit,isOpen,onClose}) {
    
     const [name, setName] = useState(dataEdit.name || "");
     const [img, setImg] = useState(dataEdit.img || "");
     const [video, setVideo] = useState(dataEdit.video || "");
     const [descricao, setDescricao] = useState(dataEdit.descricao || "");
 
-    function handleSave () {
-        if(!name || !video) return;
-
-        if(videolAlreadyExists()) {
-            return alert("Video já foi adicionado")
-        }
-        if(Object.keys(dataEdit).length){
-            data[dataEdit.index] = {name, img, video, descricao}
-        }
-
-        const newDataArray = !Object.keys(dataEdit).length
-            ? [...(data ? data : []), {name, img, video, descricao}]
-            : [...(data ? data : [])]
-
-        localStorage.setItem("video", JSON.stringify(newDataArray))
-
-        setData(newDataArray)
-        onClose()
-    }
-
-    function videolAlreadyExists() {
-        if (dataEdit.video !== video && data?.length){
-            return data.find((item) => item.video === video)
-        }
-    }
+    function dadosVideo () {
+        console.log({ name, img, video,descricao});
+   } 
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
@@ -53,39 +31,48 @@ export default function ModalComp ({data,setData,dataEdit,isOpen,onClose}) {
                     <ModalHeader>Add Video</ModalHeader>
                     <ModalCloseButton/>
                     <ModalBody>
-                        <FormControl display="flex" flexDir="column" gap={4}>
+                        <FormControl 
+                                display="flex" 
+                                flexDir="column" 
+                                gap={4}
+                        >
                             <Box>
                                 <FormLabel>Nome</FormLabel>
                                 <Input type="text"
-                                       value={name}
+                                       value={name} 
+                                       placeholder="Nome do vídeo"
                                        onChange={(event) => setName(event.target.value)}
+
                                 />
                             </Box>
                             <Box>
-                                <FormLabel>Link Imagem </FormLabel>
+                                <FormLabel>Imagem </FormLabel>
                                 <Input type="url"
                                        value={img}
+                                       placeholder="Link da imagem"
                                        onChange={(event) => setImg(event.target.value)}
                                 />
                             </Box>
                             <Box>
-                                <FormLabel>Link Video Youtube</FormLabel>
+                                <FormLabel>Video</FormLabel>
                                 <Input type="url"
-                                       value={video}
-                                       onChange={(event) => setVideo(event.target.value)}
+                                        value={video}
+                                        placeholder="Link do Youtube"
+                                        onChange={(event) => setVideo(event.target.value)}
                                 />
                             </Box>
                             <Box>
                                 <FormLabel>Descrição</FormLabel>
                                 <Input type="text"
                                        value={descricao}
+                                       placeholder="Descrção do vídeo"
                                        onChange={(event) => setDescricao(event.target.value)}
                                 />
                             </Box>
                         </FormControl>
                     </ModalBody>
                     <ModalFooter justifyContent="start">
-                        <Button colorScheme="green" mr={3} onClick={handleSave}>
+                        <Button colorScheme="green" mr={3} onClick={dadosVideo}>
                             Salvar
                         </Button>
                         <Button colorScheme="red" mr={3} onClick={onClose}>

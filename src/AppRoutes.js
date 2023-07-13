@@ -4,10 +4,7 @@ import "./index.css"
 import Footer from './Footer/Footer';
 import HeaderPrincipal from "./HeaderPrincipal/HeaderPrincipal";
 import { Banner } from "./Banner/Banner";
-import CadastraProduto from "./Cadastro_Produto/CadastroProduto";
 import Categoria from "./Categoria/Categoria";
-import { ChakraProvider } from "@chakra-ui/react";
-import AddVideo from "./AddVideo/AddVideo";
 
 export default function AppRoutes() {
   return (
@@ -22,7 +19,6 @@ export default function AppRoutes() {
         </Route>
 
       </Routes>
-
       <Footer/>
     </BrowserRouter>
   );
