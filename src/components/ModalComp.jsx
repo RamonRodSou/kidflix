@@ -10,18 +10,24 @@ import {    Modal,
             FormLabel,
             Input,
             Box,
+            Select,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { produtoService } from "../service/produto-service";
 
-export default function ModalComp ({dataEdit,isOpen,onClose}) {
+export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
    
     const [name, setName] = useState(dataEdit.name || "");
     const [img, setImg] = useState(dataEdit.img || "");
     const [video, setVideo] = useState(dataEdit.video || "");
     const [descricao, setDescricao] = useState(dataEdit.descricao || "");
+    const [categoria, setCategoria] = useState(dataEdit.categoria || "");
+ 
 
-    function dadosVideo () {
-        console.log({ name, img, video,descricao});
+    function Post () {
+          
+//              produtoService.criaProduto(name, img, video, descricao, categoria)          
+//             }
    } 
     return (
         <>
@@ -42,7 +48,6 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                        value={name} 
                                        placeholder="Nome do vídeo"
                                        onChange={(event) => setName(event.target.value)}
-
                                 />
                             </Box>
                             <Box>
@@ -69,10 +74,26 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                        onChange={(event) => setDescricao(event.target.value)}
                                 />
                             </Box>
+                            <Box>
+                                <FormLabel>Categoria</FormLabel>
+                                <Select 
+                                    placeholder='Escolha uma Categoria' 
+                                    size='md' 
+                                    variant='outline'
+                                    bg='tomato'
+                                    borderColor='tomato'
+                                    color='black'
+                                >
+                                        <option value='option1'>Desenho</option>
+                                        <option value='option2'>Musica</option>
+                                        <option value='option3'>Educativo</option>
+                                </Select>   
+
+                            </Box>
                         </FormControl>
                     </ModalBody>
                     <ModalFooter justifyContent="start">
-                        <Button colorScheme="green" mr={3} onClick={dadosVideo}>
+                        <Button colorScheme="green" mr={3} onClick={Post}>
                             Salvar
                         </Button>
                         <Button colorScheme="red" mr={3} onClick={onClose}>
