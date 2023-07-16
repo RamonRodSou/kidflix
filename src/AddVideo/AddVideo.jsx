@@ -13,18 +13,12 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useState } from "react";
 import ModalComp from '../components/ModalComp';
-import { Delete, Edit } from '@mui/icons-material';
+// import { Delete, Edit } from '@mui/icons-material';
 
 export default function AddVideo () {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [data, setData] = useState([]);
   const [dataEdit, setDataEdit] = useState({});
-
-  const isMobile = useBreakpointValue({ 
-
-    base: true,
-    lg: false,
-  });
 
   useEffect(() => {
     const db_costumer = localStorage.getItem("produto")
@@ -34,13 +28,20 @@ export default function AddVideo () {
     setData(db_costumer);
   }, [setData]);
 
-  const handleRemove = (video) => {
-    const newArray = data.filter((item) => item.video !== video);
 
-    setData(newArray);
+    // const isMobile = useBreakpointValue({ 
 
-    localStorage.setItem("produto", JSON.stringify(newArray));
-  };
+  //   base: true,
+  //   lg: false,
+  // });
+
+  // const handleRemove = (video) => {
+  //   const newArray = data.filter((item) => item.video !== video);
+
+  //   setData(newArray);
+
+  //   localStorage.setItem("produto", JSON.stringify(newArray));
+  // };
 
   return (
     <Flex

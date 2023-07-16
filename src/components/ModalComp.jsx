@@ -13,7 +13,8 @@ import {    Modal,
             Select,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { produtoService } from "../service/produto-service";
+import axios from "axios";
+
 
 export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
    
@@ -21,14 +22,25 @@ export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
     const [img, setImg] = useState(dataEdit.img || "");
     const [video, setVideo] = useState(dataEdit.video || "");
     const [descricao, setDescricao] = useState(dataEdit.descricao || "");
-    const [categoria, setCategoria] = useState(dataEdit.categoria || "");
- 
+    const [categoria, setCategoria] = useState(dataEdit.descricao || "");
 
-    function Post () {
-          
-//              produtoService.criaProduto(name, img, video, descricao, categoria)          
-//             }
-   } 
+    const url = 'http://localhost:3000/produto '
+    const Post = () => {
+     const dadosVideo = {
+         
+         name: name,
+         img: img,
+         video: video,
+         descricao: descricao,
+         categoria:categoria
+     }
+     axios.post(url, dadosVideo)
+     .then(response => {
+         alert(JSON.stringify(response.dadosVideo))
+     })
+     .catch(error => console.log(error))
+  }
+
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose}>
@@ -45,33 +57,38 @@ export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
                             <Box>
                                 <FormLabel>Nome</FormLabel>
                                 <Input type="text"
-                                       value={name} 
-                                       placeholder="Nome do vídeo"
-                                       onChange={(event) => setName(event.target.value)}
+                                    required
+                                    value={name} 
+                                    placeholder="Nome do vídeo"
+                                    onChange={(event) => setName(event.target.value)}
+                                    
                                 />
                             </Box>
                             <Box>
                                 <FormLabel>Imagem </FormLabel>
                                 <Input type="url"
-                                       value={img}
-                                       placeholder="Link da imagem"
-                                       onChange={(event) => setImg(event.target.value)}
+                                    value={img}
+                                    placeholder="Link da imagem"
+                                    onChange={(event) => setImg(event.target.value)}
+                                    required
                                 />
                             </Box>
                             <Box>
                                 <FormLabel>Video</FormLabel>
                                 <Input type="url"
-                                        value={video}
-                                        placeholder="Link do Youtube"
-                                        onChange={(event) => setVideo(event.target.value)}
+                                    value={video}
+                                    placeholder="Link do Youtube"
+                                    onChange={(event) => setVideo(event.target.value)}
+                                    required
                                 />
                             </Box>
                             <Box>
                                 <FormLabel>Descrição</FormLabel>
                                 <Input type="text"
-                                       value={descricao}
-                                       placeholder="Descrção do vídeo"
-                                       onChange={(event) => setDescricao(event.target.value)}
+                                    value={descricao}
+                                    placeholder="Descrção do vídeo"
+                                    onChange={(event) => setDescricao(event.target.value)}
+                                    required
                                 />
                             </Box>
                             <Box>
@@ -83,12 +100,13 @@ export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
                                     bg='tomato'
                                     borderColor='tomato'
                                     color='black'
+                                    required
+                                    onChange={(event) => setCategoria(event.target.value)}
                                 >
-                                        <option value='option1'>Desenho</option>
-                                        <option value='option2'>Musica</option>
-                                        <option value='option3'>Educativo</option>
+                                    <option value='Desenho'>Desenho</option>
+                                    <option value='Musica'>Musica</option>
+                                    <option value='Educativo'>Educativo</option>
                                 </Select>   
-
                             </Box>
                         </FormControl>
                     </ModalBody>

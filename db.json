@@ -39,6 +39,7 @@
       "img": "https://i.playboard.app/p/AATXAJxwkWMfy1LzJShafcqneZhm91Pqs-FiGppnkna7/default.jpg",
       "video": "https://www.youtube.com/embed/QMGxuFiHq6Q",
       "descricao": "Cleo e Kukin, desenho.",
+      "categoria": "Desenho",
       "id": 1
     },
     {
@@ -46,6 +47,7 @@
       "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
       "video": "https://youtu.be/-4UYlu3Z3i8",
       "descricao": "Personagem Animado.",
+      "categoria": "Musicas",
       "id": 2
     },
     {
@@ -53,6 +55,133 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
+      "categoria": "Filmes",
+      "id": 3
+    },
+    {
+      "name": "Patrulha Canina",
+      "img": "https://th.bing.com/th/id/R.0ee336a783fbda2c0e221ee0be9c04ff?rik=QbSN0Tytab7sHg&pid=ImgRaw&r=0",
+      "video": "https://www.youtube.com/watch?v=Hdy9EgNCXOY",
+      "descricao": "Desenho Patrulha Canina",
+      "categoria": "Desenho",
+      "id": 4
+    },
+    {
+      "name": "Cleo e Kukin",
+      "img": "https://i.playboard.app/p/AATXAJxwkWMfy1LzJShafcqneZhm91Pqs-FiGppnkna7/default.jpg",
+      "video": "https://www.youtube.com/embed/QMGxuFiHq6Q",
+      "descricao": "Cleo e Kukin, desenho.",
+      "categoria": "Desenho",
+      "id": 5
+    },
+    {
+      "name": "Blip 5",
+      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
+      "video": "https://youtu.be/-4UYlu3Z3i8",
+      "descricao": "Personagem Animado.",
+      "categoria": "Musicas",
+      "id": 6
+    },
+    {
+      "name": "3 Palavrinhas",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Musica Infantil",
+      "categoria": "Filmes",
+      "id": 7
+    },
+    {
+      "name": "Patrulha Canina",
+      "img": "https://th.bing.com/th/id/R.0ee336a783fbda2c0e221ee0be9c04ff?rik=QbSN0Tytab7sHg&pid=ImgRaw&r=0",
+      "video": "https://www.youtube.com/watch?v=Hdy9EgNCXOY",
+      "descricao": "Desenho Patrulha Canina",
+      "categoria": "Desenho",
+      "id": 8
+    },
+    {
+      "name": "Blip 5",
+      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
+      "video": "https://youtu.be/-4UYlu3Z3i8",
+      "descricao": "Personagem Animado.",
+      "categoria": "Desenho",
+      "id": 9
+    },
+    {
+      "name": "3 Palavrinhas",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Musica Infantil",
+      "categoria": "Filmes",
+      "id": 10
+    },
+    {
+      "name": "Patrulha Canina",
+      "img": "https://th.bing.com/th/id/R.0ee336a783fbda2c0e221ee0be9c04ff?rik=QbSN0Tytab7sHg&pid=ImgRaw&r=0",
+      "video": "https://www.youtube.com/watch?v=Hdy9EgNCXOY",
+      "descricao": "Desenho Patrulha Canina",
+      "categoria": "Filmes",
+      "id": 11
+    },
+    {
+      "name": "Blip 5",
+      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
+      "video": "https://youtu.be/-4UYlu3Z3i8",
+      "descricao": "Personagem Animado.",
+      "categoria": "Desenho",
+      "id": 12
+    },
+    {
+      "name": "Blip 5",
+      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
+      "video": "https://youtu.be/-4UYlu3Z3i8",
+      "descricao": "Personagem Animado.",
+      "categoria": "Musicas",
+      "id": 13
+    },
+    {
+      "name": "3 Palavrinhas",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Musica Infantil",
+      "categoria": "Filmes",
+      "id": 14
+    },
+    {
+      "name": "3 Palavrinhas",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Musica Infantil",
+      "categoria": "Filmes",
+      "id": 15
+    },
+    {
+      "name": "3 Palavrinhas",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Musica Infantil",
+      "categoria": "Musicas",
+      "id": 16
+    },
+    {
+      "name": "3 Palavrinhas",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Musica Infantil",
+      "categoria": "Musica",
+      "id": 16
+    }
+  ],
+  "categoria": [
+    {
+      "name": "Desenho",
+      "id": 1
+    },
+    {
+      "name": "Musicas",
+      "id": 2
+    },
+    {
+      "name": "Filmes",
       "id": 3
     }
   ]
