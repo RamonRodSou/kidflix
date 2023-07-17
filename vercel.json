@@ -1,0 +1,19 @@
+{
+  "builds": [
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "api/**/*.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    {
+      "src": "/api/db",
+      "dest": "/api/db.json"
+    }
+  ]
+}
