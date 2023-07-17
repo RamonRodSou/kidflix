@@ -3,14 +3,18 @@ import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from 'framer-motion';
 
-const VideosSec = styled(motion.section)`
+const CategoriaVideo= styled(motion.section)`
+
+
+`;
+const VideosSec = styled(motion.div)`
 
     display:flex;
     flex-direction:column;
     overflow: hidden;
     cursor:grab;
-    width:100%;
-    max-width:900px;
+    width:96%;
+
 `;
 
 
@@ -18,6 +22,10 @@ const VideosDiv = styled(motion.div)`
     display:flex;
     gap:0.5rem;
     margin:0 1rem;
+    width:96%;
+    min-width:900px;
+    background-color: red;
+
 `;
 
 const TituloSec = styled.h1`
@@ -31,12 +39,14 @@ const TituloSec = styled.h1`
     `;
 
     const VideoProduto = styled(motion.div)`
+    width:90px;
     min-width:90px;
+    height: 120px;
     min-height: 120px;
     position:relative;
     margin-bottom: 1rem;
 
-    
+
 `;
 
 const ImgVideo = styled.img`
@@ -83,17 +93,17 @@ export default function Categoria () {
     const [categorias, setCategorias] = useState([]);
     const [produtos, setProdutos] = useState([]);
     const [width, setWidth] = useState(0)
-    const carrosel = useRef()
+    const carrosel = useRef({})
 
     useEffect(() => {
-        
-        console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
-        setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
     
         const fetchData = async () => {
             try {
             const responseCategorias = await axios.get('http://localhost:3001/categoria');
             setCategorias(responseCategorias.data);
+
+            console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
+            setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
     
             const responseProdutos = await axios.get('http://localhost:3001/produto');
             setProdutos(responseProdutos.data);
@@ -105,13 +115,15 @@ export default function Categoria () {
   
       fetchData();
     }, []);
+
+    
     return (
-        <>
+        <CategoriaVideo>
         {categorias.map((categoria) => (
           <VideosSec 
                     ref={carrosel}
-                     key={categoria.id}                
-                     whileTap={{cursor: 'grabbing'}}
+                    key={categoria.id}    
+                    whileTap={{ cursor: 'grabbing' }}
           >
             <TituloSec>{categoria.name}</TituloSec>
             <VideosDiv
@@ -133,7 +145,7 @@ export default function Categoria () {
             </VideosDiv>
           </VideosSec>
         ))}
-      </>
+      </CategoriaVideo>
     );
   };
   

@@ -12,7 +12,7 @@ import {    Modal,
             Box,
             Select,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 
@@ -23,6 +23,8 @@ export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
     const [video, setVideo] = useState(dataEdit.video || "");
     const [descricao, setDescricao] = useState(dataEdit.descricao || "");
     const [categoria, setCategoria] = useState(dataEdit.descricao || "");
+    const [categorias, setCategorias] = useState([]);
+
 
     const url = 'http://localhost:3001/produto '
     const Post = () => {
@@ -35,11 +37,27 @@ export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
          categoria:categoria
      }
      axios.post(url, dadosVideo)
-     .then(response => {
-         alert(JSON.stringify(response.dadosVideo))
-     })
+     .then( 
+         alert(name + ' adicionado com sucesso na categoria ' + categoria)
+     )
      .catch(error => console.log(error))
   }
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+        try {
+        const responseCategorias = await axios.get('http://localhost:3001/categoria');
+        setCategorias(responseCategorias.data);
+
+        } catch (error) {
+        console.error('Erro ao obter os dados do JSON:', error);
+        alert('Ocorreu um erro na conexão com o servidor.');
+        }
+    };
+
+  fetchData();
+}, []);
 
     return (
         <>
@@ -103,9 +121,14 @@ export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
                                     required
                                     onChange={(event) => setCategoria(event.target.value)}
                                 >
-                                    <option value='Desenho'>Desenho</option>
-                                    <option value='Musica'>Musica</option>
-                                    <option value='Educativo'>Educativo</option>
+                                {categorias
+                                    .map(categoria => 
+                                        <option 
+                                            value={categoria.name} 
+                                            key={categoria.id}
+                                        >
+                                            {categoria.name}
+                                        </option>)}
                                 </Select>   
                             </Box>
                         </FormControl>

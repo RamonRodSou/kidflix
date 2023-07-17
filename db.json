@@ -47,7 +47,7 @@
       "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
       "video": "https://youtu.be/-4UYlu3Z3i8",
       "descricao": "Personagem Animado.",
-      "categoria": "Musicas",
+      "categoria": "Musica",
       "id": 2
     },
     {
@@ -55,7 +55,7 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
-      "categoria": "Filmes",
+      "categoria": "Filme",
       "id": 3
     },
     {
@@ -79,7 +79,7 @@
       "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
       "video": "https://youtu.be/-4UYlu3Z3i8",
       "descricao": "Personagem Animado.",
-      "categoria": "Musicas",
+      "categoria": "Musica",
       "id": 6
     },
     {
@@ -87,7 +87,7 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
-      "categoria": "Filmes",
+      "categoria": "Filme",
       "id": 7
     },
     {
@@ -111,7 +111,7 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
-      "categoria": "Filmes",
+      "categoria": "Filme",
       "id": 10
     },
     {
@@ -119,7 +119,7 @@
       "img": "https://th.bing.com/th/id/R.0ee336a783fbda2c0e221ee0be9c04ff?rik=QbSN0Tytab7sHg&pid=ImgRaw&r=0",
       "video": "https://www.youtube.com/watch?v=Hdy9EgNCXOY",
       "descricao": "Desenho Patrulha Canina",
-      "categoria": "Filmes",
+      "categoria": "Filme",
       "id": 11
     },
     {
@@ -135,7 +135,7 @@
       "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
       "video": "https://youtu.be/-4UYlu3Z3i8",
       "descricao": "Personagem Animado.",
-      "categoria": "Musicas",
+      "categoria": "Musica",
       "id": 13
     },
     {
@@ -143,7 +143,7 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
-      "categoria": "Filmes",
+      "categoria": "Filme",
       "id": 14
     },
     {
@@ -151,7 +151,7 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
-      "categoria": "Filmes",
+      "categoria": "Filme",
       "id": 15
     },
     {
@@ -159,7 +159,7 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
-      "categoria": "Musicas",
+      "categoria": "Musica",
       "id": 16
     },
     {
@@ -169,6 +169,95 @@
       "descricao": "Musica Infantil",
       "categoria": "Musica",
       "id": 16
+    },
+    {
+      "name": "3 Palav",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Testando",
+      "categoria": "Desenho",
+      "id": 17
+    },
+    {
+      "name": "Ramon",
+      "img": "github.com/RamonRodSou.png",
+      "video": "https://youtu.be/Rm4__WgPncI",
+      "descricao": "asd",
+      "categoria": "Desenho",
+      "id": 18
+    },
+    {
+      "name": "ramon",
+      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
+      "video": "https://youtu.be/Rm4__WgPncI",
+      "descricao": "t4est",
+      "categoria": "Musica",
+      "id": 19
+    },
+    {
+      "name": "R22",
+      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
+      "video": "https://youtu.be/Rm4__WgPncI",
+      "descricao": "213",
+      "categoria": "Musica",
+      "id": 20
+    },
+    {
+      "name": "R22",
+      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
+      "video": "https://youtu.be/Rm4__WgPncI",
+      "descricao": "213",
+      "categoria": "Educativo",
+      "id": 21
+    }
+    ,
+    {
+      "name": "R22",
+      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
+      "video": "https://youtu.be/Rm4__WgPncI",
+      "descricao": "213",
+      "categoria": "Educativo",
+      "id": 22
+    },
+    {
+      "name": "3 Palav",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Testando",
+      "categoria": "Desenho",
+      "id": 23
+    },
+    {
+      "name": "3 Palav",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Testando",
+      "categoria": "Desenho",
+      "id": 24
+    },
+    {
+      "name": "3 Palav",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Testando",
+      "categoria": "Desenho",
+      "id": 25
+    },
+    {
+      "name": "3 Palav",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Testando",
+      "categoria": "Desenho",
+      "id": 26
+    },
+    {
+      "name": "3 Palav",
+      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
+      "video": "https://youtu.be/WPZ6FKKoGo0",
+      "descricao": "Testando",
+      "categoria": "Desenho",
+      "id": 27
     }
   ],
   "categoria": [
@@ -177,12 +266,16 @@
       "id": 1
     },
     {
-      "name": "Musicas",
+      "name": "Musica",
       "id": 2
     },
     {
-      "name": "Filmes",
+      "name": "Filme",
       "id": 3
+    },
+    {
+      "name": "Educativo",
+      "id": 4
     }
   ]
 }
