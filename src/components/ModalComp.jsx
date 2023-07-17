@@ -24,7 +24,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose, times}) {
     const [descricao, setDescricao] = useState(dataEdit.descricao || "");
     const [categoria, setCategoria] = useState(dataEdit.descricao || "");
 
-    const url = 'http://localhost:3000/produto '
+    const url = 'http://localhost:3001/produto '
     const Post = () => {
      const dadosVideo = {
          

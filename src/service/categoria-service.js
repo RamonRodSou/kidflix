@@ -1,5 +1,5 @@
 const listaCategoria = () =>  {
-    return fetch(`http://localhost:3000/categoria`)
+    return fetch(`http://localhost:3001/categoria`)
     .then(resposta => {
         if(resposta.ok){
             return resposta.json()
@@ -9,7 +9,7 @@ const listaCategoria = () =>  {
 }
 
 const criaCategoria = (name) => { 
-    return fetch(`http://localhost:3000/categoria`, {
+    return fetch(`http://localhost:3001/categoria`, {
         method: 'POST', 
         headers: {
             'Content-Type' : 'application/json'
@@ -27,7 +27,7 @@ const criaCategoria = (name) => {
 }
 
 const removeCategoria = (id) => { 
-    return fetch(`http://localhost:3000/categoria/${id}`, {
+    return fetch(`http://localhost:3001/categoria/${id}`, {
         method: 'DELETE'
     })
     .then( resposta => { 
@@ -38,7 +38,7 @@ const removeCategoria = (id) => {
 }
  
 const detalhaCategoria = (id) => {  
-    return fetch(`http://localhost:3000/categoria/${id}`)
+    return fetch(`http://localhost:3001/categoria/${id}`)
     .then(resposta => { 
         if(resposta.ok){
             return resposta.json()
@@ -49,7 +49,7 @@ const detalhaCategoria = (id) => {
 }
 
 const atualizaCategoria = (name, id) => {
-    return fetch(`http://localhost:3000/categoria/${id}/${name}`, {
+    return fetch(`http://localhost:3001/categoria/${id}/${name}`, {
         method: 'PUT',
         headers: { 
             'Content-type' : 'application/json'

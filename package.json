@@ -23,6 +23,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "json-server": "json-server --watch api/db.json --port 3001",
+    "dev": "concurrently \"npm start\" \"npx json-server --watch --port 3001 db.json\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "json-server": "^0.17.3"
   }
 }

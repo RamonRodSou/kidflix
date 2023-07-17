@@ -1,5 +1,5 @@
 const listaProduto = () =>  {
-    return fetch(`http://localhost:3000/produto`)
+    return fetch(`http://localhost:3001/produto`)
     .then(resposta => {
         if(resposta.ok){
             return resposta.json()
@@ -9,7 +9,7 @@ const listaProduto = () =>  {
 }
 
 const criaProduto = (name, img, video, descricao, categoria) => { 
-    return fetch(`http://localhost:3000/produto`, {
+    return fetch(`http://localhost:3001/produto`, {
         method: 'POST', 
         headers: {
             'Content-Type' : 'application/json'
@@ -31,7 +31,7 @@ const criaProduto = (name, img, video, descricao, categoria) => {
 }
 
 const removeProduto = (id) => { 
-    return fetch(`http://localhost:3000/produto/${id}`, {
+    return fetch(`http://localhost:3001/produto/${id}`, {
         method: 'DELETE'
     })
     .then( resposta => { 
@@ -42,7 +42,7 @@ const removeProduto = (id) => {
 }
  
 const detalhaProduto = (id) => {  
-    return fetch(`http://localhost:3000/produto/${id}`)
+    return fetch(`http://localhost:3001/produto/${id}`)
     .then(resposta => { 
         if(resposta.ok){
             return resposta.json()
@@ -53,7 +53,7 @@ const detalhaProduto = (id) => {
 }
 
 const atualizaProduto = (name, img, video, descricao, categoria, id) => {
-    return fetch(`http://localhost:3000/produto/${id}/${categoria}`, {
+    return fetch(`http://localhost:3001/produto/${id}/${categoria}`, {
         method: 'PUT',
         headers: { 
             'Content-type' : 'application/json'

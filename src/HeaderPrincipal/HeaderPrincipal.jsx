@@ -29,9 +29,6 @@ export default function HeaderPrincipal() {
             className="LogoInicialCss"
         />
       </Link>
-      
-
       <Navegacao/>
-
     </InicioNav>
   )}

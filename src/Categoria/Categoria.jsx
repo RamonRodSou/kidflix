@@ -92,10 +92,10 @@ export default function Categoria () {
     
         const fetchData = async () => {
             try {
-            const responseCategorias = await axios.get('http://localhost:3000/categoria');
+            const responseCategorias = await axios.get('http://localhost:3001/categoria');
             setCategorias(responseCategorias.data);
     
-            const responseProdutos = await axios.get('http://localhost:3000/produto');
+            const responseProdutos = await axios.get('http://localhost:3001/produto');
             setProdutos(responseProdutos.data);
             } catch (error) {
             console.error('Erro ao obter os dados do JSON:', error);
