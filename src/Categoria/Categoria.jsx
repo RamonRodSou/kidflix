@@ -23,7 +23,7 @@ const VideosDiv = styled(motion.div)`
     gap:0.5rem;
     margin:0 1rem;
     width:96%;
-    min-width:900px;
+    min-width:668px;
 `;
 
 const TituloSec = styled.h1`
@@ -43,7 +43,6 @@ const TituloSec = styled.h1`
     min-height: 120px;
     position:relative;
     margin-bottom: 1rem;
-
 
 `;
 
@@ -90,7 +89,7 @@ export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
     const [produtos, setProdutos] = useState([]);
-    const [width, setWidth] = useState(0)
+    const [width, setWidth] = useState(100)
     const carrosel = useRef({})
 
     useEffect(() => {
@@ -119,15 +118,15 @@ export default function Categoria () {
         <CategoriaVideo>
         {categorias.map((categoria) => (
           <VideosSec 
+                    key={categoria.id}
                     ref={carrosel}
-                    key={categoria.id}    
                     whileTap={{ cursor: 'grabbing' }}
           >
-            <TituloSec>{categoria.categoriaName}</TituloSec>
+            <TituloSec key={categoria.id}>{categoria.categoriaName}</TituloSec>
             <VideosDiv
                 drag='x' 
                 dragConstraints={{right: 0, left: -width}}
-                initial={{x: 50}}
+                initial={{x: 100}}
                 animate={{x: 0}}
                 transition={{duration:0.8}}
             >

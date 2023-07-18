@@ -15,7 +15,6 @@ import {    Modal,
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 export default function ModalComp ({dataEdit,isOpen,onClose}) {
    
     const [name, setName] = useState(dataEdit.name || "");
@@ -29,60 +28,65 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
     const [isVisible, setIsVisible] = useState(true);
     const [notVisible, setNotVisible] = useState(false);
 
-
-
-    const url = 'http://localhost:3001/produto '
+    
     const Post = () => {
-     const dadosVideo = {
-         
-         name: name,
-         img: img,
-         video: video,
-         descricao: descricao,
-         categoria:categoria
-     }
-     axios.post(url, dadosVideo)
-     .then(() =>{
-         alert(name + ' adicionado com sucesso na categoria ' + categoria)
-         onClose()
-        })
-     .catch(error => console.log(error))
-  }
 
-  const urlCategoria = 'http://localhost:3001/categoria '
-  const PostNovaCategoria = () => {
-   const dadosCategoria = {
-    categoriaName: categoriaName,
-   }
-   axios.post(urlCategoria, dadosCategoria)
-   .then(()=>{
-       alert(categoriaName + ' adicionada com sucesso')
-       onClose()
-   })
-   .catch(error => console.log(error))
-}
-
-  useEffect(() => {
-
-    const fetchData = async () => {
-        try {
-        const responseCategorias = await axios.get('http://localhost:3001/categoria');
-        setCategorias(responseCategorias.data);
-
-        } catch (error) {
-        console.error('Erro ao obter os dados do JSON:', error);
-        alert('Ocorreu um erro na conexão com o servidor.');
+        const url = 'http://localhost:3001/produto'
+        const dadosVideo = {
+            
+            name: name,
+            img: img,
+            video: video,
+            descricao: descricao,
+            categoria:categoria
         }
-    };
+        
+        axios.post(url, dadosVideo)
+        .then(() =>{
+            alert(name + ' adicionado com sucesso na categoria ' + categoria)
+            onClose()
+            })
+        .catch(error => console.log(error))
+    }
 
-  fetchData();
-}, []);
+    const PostNovaCategoria = () => {
 
-function NovaCategoria () {
-    setIsVisible(!isVisible);
-    setNotVisible(!notVisible);
+        const urlCategoria = 'http://localhost:3001/categoria '
+        const dadosCategoria = {
+            categoriaName: categoriaName,
+        }
 
-}
+        axios.post(urlCategoria, dadosCategoria)
+        .then(()=>{
+            alert(categoriaName + ' adicionada com sucesso')
+            onClose()
+        })
+        .catch(error => console.log(error))
+        }
+
+        useEffect(() => {
+
+            const fetchData = async () => {
+                try {
+                const responseCategorias = await axios.get('http://localhost:3001/categoria');
+                setCategorias(responseCategorias.data);
+
+                } catch (error) {
+                console.error('Erro ao obter os dados do JSON:', error);
+                alert('Ocorreu um erro na conexão com o servidor.');
+                }
+            };
+
+        fetchData();
+        }, []);
+
+    function NovaCategoria () {
+
+        setIsVisible(!isVisible);
+        setNotVisible(!notVisible);
+    }
+
+
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose} className="addVideo" >
@@ -92,13 +96,14 @@ function NovaCategoria () {
     {notVisible &&<ModalHeader>Nova Categoria</ModalHeader>}
                     <ModalCloseButton/>
                     <ModalBody>
-        {isVisible &&   <FormControl 
+        {isVisible &&   <FormControl
                                 display="flex" 
                                 flexDir="column" 
                                 gap={4}>
                             <Box>
                                 <FormLabel>Nome</FormLabel>
-                                <Input type="text"
+                                <Input 
+                                    type="text"
                                     required
                                     value={name} 
                                     placeholder="Nome do vídeo"
@@ -147,8 +152,8 @@ function NovaCategoria () {
                                 {categorias
                                     .map(categoria => 
                                         <option 
-                                            value={categoria.categoriaName} 
                                             key={categoria.id}
+                                            value={categoria.categoriaName} 
                                         >
                                             {categoria.categoriaName}
                                         </option>)}
@@ -161,7 +166,8 @@ function NovaCategoria () {
                                 gap={4}>
                             <Box>
                                 <FormLabel>Nova Categoria</FormLabel>
-                                <Input type="text"
+                                <Input 
+                                    type="text"
                                     value={categoriaName}
                                     placeholder="Nova Categoria"
                                     onChange={(event) => setCategoriaName(event.target.value)}
@@ -171,7 +177,7 @@ function NovaCategoria () {
                         </FormControl>}
                     </ModalBody>
                     <ModalFooter justifyContent="start">
-        {isVisible &&   <Button colorScheme="green" mr={2} onClick={Post}> 
+        {isVisible &&   <Button type="submit" colorScheme="green" mr={2} onClick={Post} >  
                             Salvar
                         </Button>}
                         <Button colorScheme="red" mr={2} onClick={onClose}>
@@ -180,7 +186,7 @@ function NovaCategoria () {
         {isVisible &&   <Button colorScheme="blue" mr={2} onClick={NovaCategoria}>
                             Nova Categoria
                         </Button>}
-        {notVisible &&   <Button colorScheme="green" mr={2} onClick={PostNovaCategoria}>
+        {notVisible &&   <Button type="submit" colorScheme="green" mr={2} onClick={PostNovaCategoria} >
                             Salvar
                         </Button>}
                     </ModalFooter>
