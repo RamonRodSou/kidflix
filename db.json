@@ -179,14 +179,6 @@
       "id": 17
     },
     {
-      "name": "Ramon",
-      "img": "github.com/RamonRodSou.png",
-      "video": "https://youtu.be/Rm4__WgPncI",
-      "descricao": "asd",
-      "categoria": "Desenho",
-      "id": 18
-    },
-    {
       "name": "ramon",
       "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
       "video": "https://youtu.be/Rm4__WgPncI",
@@ -209,8 +201,7 @@
       "descricao": "213",
       "categoria": "Educativo",
       "id": 21
-    }
-    ,
+    },
     {
       "name": "R22",
       "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
@@ -262,20 +253,16 @@
   ],
   "categoria": [
     {
-      "name": "Desenho",
+      "categoriaName": "Desenho",
       "id": 1
     },
     {
-      "name": "Musica",
+      "categoriaName": "Musica",
       "id": 2
     },
     {
-      "name": "Filme",
+      "categoriaName": "Filme",
       "id": 3
-    },
-    {
-      "name": "Educativo",
-      "id": 4
     }
   ]
 }

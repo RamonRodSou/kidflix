@@ -24,8 +24,6 @@ const VideosDiv = styled(motion.div)`
     margin:0 1rem;
     width:96%;
     min-width:900px;
-    background-color: red;
-
 `;
 
 const TituloSec = styled.h1`
@@ -125,7 +123,7 @@ export default function Categoria () {
                     key={categoria.id}    
                     whileTap={{ cursor: 'grabbing' }}
           >
-            <TituloSec>{categoria.name}</TituloSec>
+            <TituloSec>{categoria.categoriaName}</TituloSec>
             <VideosDiv
                 drag='x' 
                 dragConstraints={{right: 0, left: -width}}
@@ -134,7 +132,7 @@ export default function Categoria () {
                 transition={{duration:0.8}}
             >
               {produtos
-                .filter((produto) => produto.categoria === categoria.name)
+                .filter((produto) => produto.categoria === categoria.categoriaName)
                 .map((produto) => (
                   <VideoProduto key={produto.id}>
                     <ImgVideo src={produto.img} alt={produto.name} />
