@@ -249,6 +249,14 @@
       "descricao": "Testando",
       "categoria": "Desenho",
       "id": 27
+    },
+    {
+      "name": "Samon",
+      "img": "https://github.com/RamonRodSou.png",
+      "video": "https://github.com/RamonRodSou.png",
+      "descricao": "asdasdasdas",
+      "categoria": "Nova",
+      "id": 28
     }
   ],
   "categoria": [
@@ -263,6 +271,10 @@
     {
       "categoriaName": "Filme",
       "id": 3
+    },
+    {
+      "categoriaName": "Nova",
+      "id": 4
     }
   ]
 }

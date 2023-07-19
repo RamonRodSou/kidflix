@@ -12,6 +12,7 @@ const InicioNav = styled.header`
   margin:0.5rem 0;
   background-color: #ffffff20;
   position:absolute;
+  z-index: 1;
 
   @media (min-width: 768px) {
 

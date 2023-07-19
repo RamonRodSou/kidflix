@@ -5,25 +5,29 @@ import { motion } from 'framer-motion';
 
 const CategoriaVideo= styled(motion.section)`
 
+  display:flex;
+  flex-direction:column;
 
 `;
 const VideosSec = styled(motion.div)`
 
     display:flex;
+
     flex-direction:column;
     overflow: hidden;
     cursor:grab;
-    width:96%;
+    width:100%;
 
 `;
 
 
 const VideosDiv = styled(motion.div)`
+
     display:flex;
     gap:0.5rem;
     margin:0 1rem;
-    width:96%;
-    min-width:668px;
+    width:100%;
+    min-width:900px
 `;
 
 const TituloSec = styled.h1`
@@ -89,8 +93,20 @@ export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
     const [produtos, setProdutos] = useState([]);
-    const [width, setWidth] = useState(100)
+    const [width, setWidth] = useState(0)
     const carrosel = useRef({})
+
+    const getVideosDivWidth = (numVideos) => {
+      const videoWidth = 110; 
+      const numVideosToShow = Math.min(numVideos);
+      const total = numVideosToShow * videoWidth;
+
+      console.log(total)
+
+      return total;
+    
+    };
+    
 
     useEffect(() => {
     
@@ -99,9 +115,10 @@ export default function Categoria () {
             const responseCategorias = await axios.get('http://localhost:3001/categoria');
             setCategorias(responseCategorias.data);
 
-            console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
-            setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
+            // console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
+            // setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
     
+            
             const responseProdutos = await axios.get('http://localhost:3001/produto');
             setProdutos(responseProdutos.data);
             } catch (error) {
@@ -113,7 +130,6 @@ export default function Categoria () {
       fetchData();
     }, []);
 
-    
     return (
         <CategoriaVideo>
         {categorias.map((categoria) => (
@@ -125,10 +141,13 @@ export default function Categoria () {
             <TituloSec key={categoria.id}>{categoria.categoriaName}</TituloSec>
             <VideosDiv
                 drag='x' 
-                dragConstraints={{right: 0, left: -width}}
-                initial={{x: 100}}
-                animate={{x: 0}}
-                transition={{duration:0.8}}
+                dragConstraints={{ right: 0, left: -width }}
+                dragElastic={0.8} // Adicionando a propriedade dragElastic
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                transition={{ duration: 0.8 }}
+                style={{ minWidth: getVideosDivWidth(
+                  produtos.filter((produto) => produto.categoria === categoria.categoriaName).length)}}
             >
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)

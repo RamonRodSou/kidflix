@@ -85,8 +85,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         setIsVisible(!isVisible);
         setNotVisible(!notVisible);
     }
-
-
+    
     return (
         <>
             <Modal isOpen={isOpen} onClose={onClose} className="addVideo" >
