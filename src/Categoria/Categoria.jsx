@@ -2,6 +2,8 @@ import { styled } from "styled-components";
 import { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from 'framer-motion';
+import { Flex } from "@chakra-ui/react";
+import LinkNav from "../LinkNav/LinkNav";
 
 const CategoriaVideo= styled(motion.section)`
 
@@ -32,11 +34,10 @@ const VideosDiv = styled(motion.div)`
 
 const TituloSec = styled.h1`
 
-    margin: 0.5rem 1rem;
-    color: #ffffff;
+    color: #ff5537;
     font-size:1rem;
     font-weight:700;
-    text-shadow: 2px 3px 5px black;
+    text-shadow: 2px 3px 5px #fefefe, -1px -3px 5px #fefefe;
 
     `;
 
@@ -115,8 +116,8 @@ export default function Categoria () {
             const responseCategorias = await axios.get('http://localhost:3001/categoria');
             setCategorias(responseCategorias.data);
 
-            // console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
-            // setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
+            console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
+            setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
     
             
             const responseProdutos = await axios.get('http://localhost:3001/produto');
@@ -138,7 +139,12 @@ export default function Categoria () {
                     ref={carrosel}
                     whileTap={{ cursor: 'grabbing' }}
           >
-            <TituloSec key={categoria.id}>{categoria.categoriaName}</TituloSec>
+
+            <Flex alignItems='center' justifyContent='space-between' margin='1rem 1rem 0.5rem' >
+              <TituloSec key={categoria.id}>{categoria.categoriaName}</TituloSec>
+              <LinkNav color='#ff0000' textShadow='#fefefe' to={categoria.categoriaName}>Ver Tudo</LinkNav>
+            </Flex>
+
             <VideosDiv
                 drag='x' 
                 dragConstraints={{ right: 0, left: -width }}

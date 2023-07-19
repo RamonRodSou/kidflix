@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 export default function LinkNav ({children, to, color}){
 
     const textColor = color ? color : 'white';
+    const shadowColor = color ? color : 'black';
+
     const style = {
         color: textColor,
         textDecoration: "inherit",
-        textShadow: "2px 3px 5px black",
+        textShadow: "2px 3px 5px shadowColor",
         textAlign: "center"
       };
       
