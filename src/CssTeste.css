@@ -14,7 +14,10 @@ border-radius: 2px;
 
 display: flex;
 text-align: center;
+align-items: center;
 justify-content: space-around;
 background-color: #ffffff00;
+
+box-sizing: border-box;
 
 }

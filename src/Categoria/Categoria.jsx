@@ -1,9 +1,12 @@
 import { styled } from "styled-components";
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from 'framer-motion';
-import { Flex } from "@chakra-ui/react";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
 import LinkNav from "../LinkNav/LinkNav";
+import ImgplayPng from './play.png'
+import AbrirModalVideo from "../AbrirModal/AbrirModalVideo";
+
 
 const CategoriaVideo= styled(motion.section)`
 
@@ -21,7 +24,6 @@ const VideosSec = styled(motion.div)`
     width:100%;
 
 `;
-
 
 const VideosDiv = styled(motion.div)`
 
@@ -60,17 +62,21 @@ const ImgVideo = styled.img`
     
 `;
 
-const ImgPlay = styled.img`
-    width:30px;
-    position: absolute;
-    top: 40%;
-    left: 30%;
-    cursor:pointer;
+const ImgPlay = {
+    width:'40px',
+    position: 'absolute',
+    top: '35%',
+    left: '30%',
+    cursor:'pointer',
     
-`;
+}
 
-const LinkPlay = styled.a`
+const VideoPlay = styled.video`
     cursor:pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    pointer-events: none;
 `;
 
 const TituloVideo = styled.p`
@@ -90,6 +96,18 @@ const TituloVideo = styled.p`
 
 `;
 
+const styledPlay = {
+
+  width:'200px',
+  // position: 'absolute',
+  // top: '35%',
+  // left: '30%',
+  // cursor:'pointer',
+  background: 'red',
+  
+
+}
+
 export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
@@ -107,7 +125,16 @@ export default function Categoria () {
       return total;
     
     };
-    
+  
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [videoUrl, setVideoUrl] = useState("");
+  
+
+    const closeModal = () => {
+      setIsModalOpen(false);
+      setVideoUrl("");
+    };
+
 
     useEffect(() => {
     
@@ -116,15 +143,18 @@ export default function Categoria () {
             const responseCategorias = await axios.get('http://localhost:3001/categoria');
             setCategorias(responseCategorias.data);
 
-            console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
-            setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
-    
-            
             const responseProdutos = await axios.get('http://localhost:3001/produto');
             setProdutos(responseProdutos.data);
+
+            
+            // console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
+            // setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
+    
+
+
             } catch (error) {
             console.error('Erro ao obter os dados do JSON:', error);
-            alert('Ocorreu um erro na conexão com o servidor.');
+            alert('Erro no Categoria.jsx.');
             }
         };
   
@@ -153,15 +183,19 @@ export default function Categoria () {
                 animate={{ x: 0 }}
                 transition={{ duration: 0.8 }}
                 style={{ minWidth: getVideosDivWidth(
-                  produtos.filter((produto) => produto.categoria === categoria.categoriaName).length)}}
+              produtos.filter((produto) => produto.categoria === categoria.categoriaName).length)}}
             >
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)
                 .map((produto) => (
                   <VideoProduto key={produto.id}>
                     <ImgVideo src={produto.img} alt={produto.name} />
+                      <ChakraProvider>
+                        <AbrirModalVideo estilo={ImgPlay}>
+                            <img src={ImgplayPng} alt='Imagem Play' style={ImgPlay}/>
+                        </AbrirModalVideo>
+                      </ChakraProvider>
                     <TituloVideo>{produto.name}</TituloVideo>
-                    <LinkPlay title={produto.name} src={produto.video} width="560" height="315" frameBorder="0" allowFullScreen></LinkPlay>
                   </VideoProduto>
                 ))}
             </VideosDiv>

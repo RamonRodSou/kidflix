@@ -21,7 +21,7 @@ export default function AppRoutes() {
 
         } catch (error) {
         console.error('Erro ao obter os dados do JSON:', error);
-        alert('Ocorreu um erro na conexão com o servidor.');
+        alert('Erro no AppRoutes.');
         }
     };
   

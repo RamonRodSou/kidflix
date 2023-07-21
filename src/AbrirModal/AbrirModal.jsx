@@ -1,14 +1,19 @@
 import {
     Box,
-    Flex,
     Button,
+    Flex,
     useDisclosure,
   } from '@chakra-ui/react';
+
   import { useEffect, useState } from "react";
   import ModalComp from '../components/ModalComp';
+import OpenModalDynamic from '../components/OpenModal';
+
   // import { Delete, Edit } from '@mui/icons-material';
   
-  export default function AddVideo () {
+  export default function AbrirModal () {
+
+
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [data, setData] = useState([]);
     const [dataEdit, setDataEdit] = useState({});
@@ -20,7 +25,6 @@ import {
   
       setData(db_costumer);
     }, [setData]);
-  
   
       // const isMobile = useBreakpointValue({ 
   
@@ -35,35 +39,41 @@ import {
   
     //   localStorage.setItem("produto", JSON.stringify(newArray));
     // };
-  
+    
+    const style = {
+      height: '24px',
+      lineHeight: '1.2',
+      transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
+      borderRadius: '4px',
+      boxShadow: 'rgb(17, 17, 17) 2px 3px 5px',
+      padding: '0.5rem',
+      fontSize: '1rem',
+      fontWeight: 'medium',
+      background: '#ff0000',
+      color: '#fff',
+      _hover: { bg: '#cc0000' },
+      _active: {
+        bg: '#dddfe2',
+        transform: 'scale(0.98)'
+      }
+    };
+
     return (
       <Flex
         align="center"
-        justify="center"
+        justify="center"    
         fontSize="20px"
         fontFamily="mono"
         margin="0 0.5rem"
       >
         <Box>
-          <Button   height='24px'
-                    lineHeight='1.2'
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
-                    borderRadius='4px'
-                    boxShadow='rgb(17, 17, 17) 2px 3px 5px'
-                    px='30px'
-                    padding='0.5rem'
-                    fontSize='1rem'
-                    fontWeight='medium'
-                    bg='#ff0000'
-                    color='#fff'
-                    _hover={{ bg: '#cc0000' }}
-                    _active={{
-                      bg: '#dddfe2',
-                      transform: 'scale(0.98)',
-                    }}
-                  onClick={() => [setDataEdit({}), onOpen()]}>
-            Add
-          </Button>
+          <OpenModalDynamic  
+              tag={Button} 
+              edit={setDataEdit} 
+              onOpen={onOpen}
+              estilo={style}>
+                Add
+          </OpenModalDynamic>
         </Box>
         {isOpen && (
           <ModalComp
@@ -76,5 +86,6 @@ import {
           />
         )}
       </Flex>
+      
     );
   };

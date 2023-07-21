@@ -73,7 +73,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
 
                 } catch (error) {
                 console.error('Erro ao obter os dados do JSON:', error);
-                alert('Ocorreu um erro na conexão com o servidor.');
+                alert('Erro no Modal.');
                 }
             };
 
@@ -88,7 +88,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
     
     return (
         <>
-            <Modal isOpen={isOpen} onClose={onClose} className="addVideo" >
+            <Modal isOpen={isOpen} onClose={onClose} >
                 <ModalOverlay/>
                 <ModalContent maxW="90%">
     {isVisible &&<ModalHeader>Novo Video</ModalHeader>}

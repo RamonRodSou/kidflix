@@ -2,7 +2,8 @@ import styled from "styled-components";
 import React from "react";
 import LinkNav from "../LinkNav/LinkNav";
 import { ChakraProvider } from "@chakra-ui/react";
-import AddVideo from "../AddVideo/AddVideo";
+import AbrirModal from "../AbrirModal/AbrirModal";
+
 const UlPrincipal = styled.nav`
 
     display: flex;
@@ -26,7 +27,7 @@ export function Navegacao  () {
         <LinkNav to="/filme">Filme</LinkNav>
         <LinkNav to="/musica">Musica</LinkNav>
         <ChakraProvider>
-          <AddVideo/>
+          <AbrirModal> Add </AbrirModal>
         </ChakraProvider>
 
       </UlPrincipal> 
