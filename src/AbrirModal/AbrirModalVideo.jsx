@@ -8,7 +8,7 @@ import {
 import OpenModalDynamic from '../components/OpenModal';
 import ModalVideo from '../components/ModalVideo';
   
-  export default function AbrirModalVideo ({ children, estilo }) {
+  export default function AbrirModalVideo ({ children, estilo,videoId }) {
 
 
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -17,7 +17,7 @@ import ModalVideo from '../components/ModalVideo';
   
     return (
       <Flex
-        align="center"
+        align="center" 
         justify="center"    
         fontSize="20px"
         fontFamily="mono"
@@ -41,6 +41,7 @@ import ModalVideo from '../components/ModalVideo';
             setData={setData}
             dataEdit={dataEdit}
             setDataEdit={setDataEdit}
+            videoId={videoId}
           />
         )}
       </Flex>

@@ -9,26 +9,20 @@ export default function ModalVideo ({ isOpen, onClose, videoId  }) {
 
     height: "300px",
     width: "100%",
-    margin: "1rem",
     playerVars: {
       autoplay: 1,
     },
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl">
+    <Modal isOpen={isOpen} onClose={onClose} size="xl" >
       <ModalOverlay />
-      <ModalContent >
+      <ModalContent  bg=''>
         <ModalCloseButton />
-        <ModalBody  >
-          <YouTube  videoId='QMGxuFiHq6Q' opts={opts}/>
+        <ModalBody  marginTop='2rem'>
+          <YouTube  videoId={videoId} opts={opts}/>
         </ModalBody>
       </ModalContent>
     </Modal>
   );
 };
-
-
-
-// AIzaSyCceZR8WdXJGcXi12y93igrROHnaemASFc  api key
-// https://chat.openai.com/share/88d3240e-8c73-4710-bfc8-30b6ec85233f

@@ -126,16 +126,6 @@ export default function Categoria () {
     
     };
   
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [videoUrl, setVideoUrl] = useState("");
-  
-
-    const closeModal = () => {
-      setIsModalOpen(false);
-      setVideoUrl("");
-    };
-
-
     useEffect(() => {
     
         const fetchData = async () => {
@@ -147,8 +137,8 @@ export default function Categoria () {
             setProdutos(responseProdutos.data);
 
             
-            // console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
-            // setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
+            console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
+            setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
     
 
 
@@ -161,6 +151,12 @@ export default function Categoria () {
       fetchData();
     }, []);
 
+    const getYouTubeID = (url) => {
+      const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
+      const match = url.match(regex);
+    
+      return match ? match[1] : "";
+    };
     return (
         <CategoriaVideo>
         {categorias.map((categoria) => (
@@ -182,8 +178,8 @@ export default function Categoria () {
                 initial={{ x: 100 }}
                 animate={{ x: 0 }}
                 transition={{ duration: 0.8 }}
-                style={{ minWidth: getVideosDivWidth(
-              produtos.filter((produto) => produto.categoria === categoria.categoriaName).length)}}
+              //   style={{ minWidth: getVideosDivWidth(
+              // produtos.filter((produto) => produto.categoria === categoria.categoriaName).length)}}
             >
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)
@@ -191,7 +187,7 @@ export default function Categoria () {
                   <VideoProduto key={produto.id}>
                     <ImgVideo src={produto.img} alt={produto.name} />
                       <ChakraProvider>
-                        <AbrirModalVideo estilo={ImgPlay}>
+                        <AbrirModalVideo estilo={ImgPlay} videoId={getYouTubeID(produto.video)}>
                             <img src={ImgplayPng} alt='Imagem Play' style={ImgPlay}/>
                         </AbrirModalVideo>
                       </ChakraProvider>
