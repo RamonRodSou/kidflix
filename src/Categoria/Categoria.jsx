@@ -32,7 +32,7 @@ const VideosDiv = styled(motion.div)`
     gap:0.5rem;
     margin:0 1rem;
     width:100%;
-    min-width:400px
+    min-width:600px;
 `;
 
 const TituloSec = styled.h1`
