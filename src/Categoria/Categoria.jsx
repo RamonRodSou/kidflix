@@ -6,9 +6,7 @@ import { ChakraProvider, Flex } from "@chakra-ui/react";
 import ImgplayPng from './play.png'
 import AbrirModalVideo from "../AbrirModal/AbrirModalVideo";
 import { NavLink } from "react-router-dom";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 
 const CategoriaVideo= styled(motion.section)`
 
@@ -102,17 +100,6 @@ const VerTudo = {
   padding:'5px',
   background: 'red'
 }
-
-const settings = {
-  infinite: true, // Enable infinite loop
-  slidesToShow: 3, // Number of visible slides at once
-  slidesToScroll: 1, // Number of slides to scroll on each navigation
-  autoplay: true, // Enable automatic sliding
-  speed: 2000, // Slide transition speed in milliseconds
-  autoplaySpeed: 5000, // Time between slides during automatic sliding
-  cssEase: "linear", // Slide transition CSS easing function
-};
-
 export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
@@ -153,7 +140,6 @@ export default function Categoria () {
     
     return (
         <CategoriaVideo>
-        
         {categorias.map((categoria) => (
           <VideosSec 
                     key={categoria.id}
@@ -167,12 +153,12 @@ export default function Categoria () {
             </Flex>
 
             <VideosDiv
-                // drag='x' 
-                // dragConstraints={{ right: 0, left: -width }}
-                // dragElastic={0.8}
-                // initial={{ x: 100 }}
-                // animate={{ x: 0 }}
-                // transition={{ duration: 0.8 }}
+                drag='x' 
+                dragConstraints={{ right: 0, left: -width }}
+                dragElastic={0.8}
+                initial={{ x: 100 }}
+                animate={{ x: 0 }}
+                transition={{ duration: 0.8 }}
             >
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)
