@@ -12,6 +12,7 @@ const CategoriaVideo= styled(motion.section)`
 
   display:flex;
   flex-direction:column;
+  background-color:black;
 
 `;
 const VideosSec = styled(motion.div)`
@@ -31,19 +32,19 @@ const VideosDiv = styled(motion.div)`
     gap:0.5rem;
     margin:0 1rem;
     width:100%;
-    min-width:900px
+    min-width:400px
 `;
 
 const TituloSec = styled.h1`
 
-    color: #ff5537;
+    color: #fff ;
     font-size:1rem;
     font-weight:700;
     text-shadow: 2px 3px 5px #fefefe, -1px -3px 5px #fefefe;
 
-    `;
+`;
 
-    const VideoProduto = styled(motion.div)`
+const VideoProduto = styled(motion.div)`
     width:90px;
     min-width:90px;
     height: 120px;
@@ -57,7 +58,9 @@ const ImgVideo = styled.img`
     
     min-width:100%;
     min-height:100%;
-    border-radius: 5px;
+    height:120px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     pointer-events:none;
     
 `;
@@ -71,21 +74,14 @@ const ImgPlay = {
     
 }
 
-const VideoPlay = styled.video`
-    cursor:pointer;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-    pointer-events: none;
-`;
-
 const TituloVideo = styled.p`
     position: relative;
     bottom:0 ;
     margin:0;
 
     background-color:#FF4C4C;
-    border-radius:2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
     color: #FFFFFF;
     text-shadow: 2px 3px 5px black;
     text-align:center;
@@ -96,52 +92,36 @@ const TituloVideo = styled.p`
 
 `;
 
-const styledPlay = {
-
-  width:'200px',
-  // position: 'absolute',
-  // top: '35%',
-  // left: '30%',
-  // cursor:'pointer',
-  background: 'red',
-  
-
+const VerTudo = {
+  color: '#fff',
+  fontSize:'0.5rem',
+  textShadow: '2px 3px 5px #fefefe, -1px -3px 5px #fefefe',
+  border:'1px solid #FFF ',
+  borderRadius:"10px",
+  padding:'5px',
+  background: 'red'
 }
-
 export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
     const [produtos, setProdutos] = useState([]);
     const [width, setWidth] = useState(0)
     const carrosel = useRef({})
-
-    const getVideosDivWidth = (numVideos) => {
-      const videoWidth = 110; 
-      const numVideosToShow = Math.min(numVideos);
-      const total = numVideosToShow * videoWidth;
-
-      console.log(total)
-
-      return total;
     
-    };
-  
     useEffect(() => {
     
         const fetchData = async () => {
             try {
-            const responseCategorias = await axios.get('http://localhost:3001/categoria');
-            setCategorias(responseCategorias.data);
+            // const responseCategorias = await axios.get('http://localhost:3001/categoria/');
+            const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
+            setCategorias(responseCategorias.data)
 
-            const responseProdutos = await axios.get('http://localhost:3001/produto');
-            setProdutos(responseProdutos.data);
+            // const responseProdutos = await axios.get('http://localhost:3001/produto/');
+            const responseProdutos = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/');
+            setProdutos(responseProdutos.data)
 
-            
-            console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
             setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
     
-
-
             } catch (error) {
             console.error('Erro ao obter os dados do JSON:', error);
             alert('Erro no Categoria.jsx.');
@@ -166,20 +146,18 @@ export default function Categoria () {
                     whileTap={{ cursor: 'grabbing' }}
           >
 
-            <Flex alignItems='center' justifyContent='space-between' margin='1rem 1rem 0.5rem' >
-              <TituloSec key={categoria.id}>{categoria.categoriaName}</TituloSec>
-              <LinkNav color='#ff0000' textShadow='#fefefe' to={categoria.categoriaName}>Ver Tudo</LinkNav>
+            <Flex key={categoria.id} alignItems='center' justifyContent='space-between' margin='1rem 1rem 0.5rem' >
+              <TituloSec >{categoria.categoriaName}</TituloSec>
+              <LinkNav style={VerTudo} textShadow='#fefefe' to={categoria.categoriaName} >Ver Tudo</LinkNav>
             </Flex>
 
             <VideosDiv
                 drag='x' 
                 dragConstraints={{ right: 0, left: -width }}
-                dragElastic={0.8} // Adicionando a propriedade dragElastic
+                dragElastic={0.8}
                 initial={{ x: 100 }}
                 animate={{ x: 0 }}
                 transition={{ duration: 0.8 }}
-              //   style={{ minWidth: getVideosDivWidth(
-              // produtos.filter((produto) => produto.categoria === categoria.categoriaName).length)}}
             >
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)
@@ -201,3 +179,27 @@ export default function Categoria () {
     );
   };
   
+
+
+  // Quando for na tela no PC a Imagem vai ser a Imagem do Proprio Video
+
+//   Implemnentar isso no codigo
+
+// const VideoProduto = styled(motion.div)`
+// width:100px;
+// min-width:200px;
+// height: 200px;
+// min-height: 120px;
+// position:relative;
+// margin-bottom: 1rem;
+
+// `;
+
+// const ThumbnailVideo = styled.img`
+// min-width: 100%;
+// min-height: 100%;
+// border-radius: 5px;
+// pointer-events: none;
+// `;
+
+// <ThumbnailVideo src={`https://img.youtube.com/vi/${getYouTubeID(produto.video)}/hqdefault.jpg`} alt={produto.name} />          

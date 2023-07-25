@@ -7,21 +7,36 @@ import { Outlet } from "react-router-dom";
 
 
 const VideoBanner = styled.section`
+`;
 
+const BannerContainer = styled.div`
+  position: relative;
 `;
 
 const BannerInicial = styled.img`
+  width: 100%;
+  height: calc(100% - 65px);
+  word-wrap: break-word;
 
-    width:100%;
-    height:calc(100% - 65px);
-    word-wrap:break-word;
 
+  @media (min-width: 768px) {
+    height: 80vh;
+  }
+`;
 
-    @media (min-width: 768px) {
+const BannerGradient = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.9) 100%
 
-        height:80vh;
-
-    }
+  );
 `;
 
 const LogoMeio = styled.div`
@@ -49,7 +64,10 @@ export function Banner () {
 
     return (
         <VideoBanner>
-            <BannerInicial src={ImgBanner} alt={ImgBanner}/>
+            <BannerContainer>
+                <BannerGradient />
+                <BannerInicial src={ImgBanner} alt={ImgBanner} />
+            </BannerContainer>
             <LogoMeio>
                 <LogoPrincipal
                     className="LogoBannerCss"

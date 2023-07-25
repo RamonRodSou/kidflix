@@ -37,7 +37,7 @@
     {
       "name": "Cleo e Kukin",
       "img": "https://i.playboard.app/p/AATXAJxwkWMfy1LzJShafcqneZhm91Pqs-FiGppnkna7/default.jpg",
-      "video": "QMGxuFiHq6Q",
+      "video": "https://youtu.be/QMGxuFiHq6Q",
       "descricao": "Cleo e Kukin, desenho.",
       "categoria": "Desenho",
       "id": 1
@@ -47,7 +47,7 @@
       "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
       "video": "https://www.youtube.com/watch?v=L-g27xGxejA&t=1s",
       "descricao": "Personagem Animado.",
-      "categoria": "Musica",
+      "categoria": "Desenho",
       "id": 2
     },
     {
@@ -55,208 +55,144 @@
       "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
       "video": "https://youtu.be/WPZ6FKKoGo0",
       "descricao": "Musica Infantil",
-      "categoria": "Filme",
+      "categoria": "Desenho",
       "id": 3
     },
     {
       "name": "Patrulha Canina",
-      "img": "https://th.bing.com/th/id/R.0ee336a783fbda2c0e221ee0be9c04ff?rik=QbSN0Tytab7sHg&pid=ImgRaw&r=0",
+      "img": "https://http2.mlstatic.com/placa-elipse-patrulha-canina-com-50cm-brinde-D_NQ_NP_308305-MLB25018288720_082016-F.jpg",
       "video": "https://www.youtube.com/watch?v=Hdy9EgNCXOY",
       "descricao": "Desenho Patrulha Canina",
       "categoria": "Desenho",
       "id": 4
     },
     {
-      "name": "Cleo e Kukin",
-      "img": "https://i.playboard.app/p/AATXAJxwkWMfy1LzJShafcqneZhm91Pqs-FiGppnkna7/default.jpg",
-      "video": "https://www.youtube.com/embed/QMGxuFiHq6Q",
-      "descricao": "Cleo e Kukin, desenho.",
+      "name": "Daniel Tigre",
+      "img": "https://yt3.ggpht.com/a-/AAuE7mApREknt4jiP8VA-Z0gOETHSp99rvkxDwnI=s900-mo-c-c0xffffffff-rj-k-no",
+      "video": "https://www.youtube.com/watch?v=h80TkPDUAnY",
+      "descricao": "Daniel Tigre, desenho de animais",
       "categoria": "Desenho",
       "id": 5
     },
     {
-      "name": "Blip 5",
-      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
-      "video": "https://www.youtube.com/watch?v=L-g27xGxejA&t=1s",
-      "descricao": "Personagem Animado.",
-      "categoria": "Musica",
+      "name": "Justin",
+      "img": "https://th.bing.com/th/id/OIP.OlEkdHN_IrmMJpQnQpsS_wAAAA?pid=ImgDet&rs=1",
+      "video": "https://www.youtube.com/watch?v=UhKEDEKiUyk",
+      "descricao": "A hora do justin em Inglês",
+      "categoria": "Desenho",
       "id": 6
     },
     {
-      "name": "3 Palavrinhas",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Musica Infantil",
-      "categoria": "Filme",
+      "name": "Festa de Palavras",
+      "img": "https://m.media-amazon.com/images/S/aplus-seller-content-images-us-east-1/ATVPDKIKX0DER/A1B7M9EQGNCLQA/B06Y2G2WWD/3hutZ1QFSCGw._UX300_TTW__.png",
+      "video": "https://www.youtube.com/watch?v=gVZ2FvneuOU",
+      "descricao": "Festa de Palavras",
+      "categoria": "Desenho",
       "id": 7
     },
     {
-      "name": "Patrulha Canina",
-      "img": "https://th.bing.com/th/id/R.0ee336a783fbda2c0e221ee0be9c04ff?rik=QbSN0Tytab7sHg&pid=ImgRaw&r=0",
-      "video": "https://www.youtube.com/watch?v=Hdy9EgNCXOY",
-      "descricao": "Desenho Patrulha Canina",
+      "name": "Heroi",
+      "img": "https://i.scdn.co/image/ab67616d0000b27309f5222f385b298444336c50",
+      "video": "https://www.youtube.com/watch?v=-gePheD2dfQ",
+      "descricao": "Heroi do Coração",
       "categoria": "Desenho",
       "id": 8
     },
     {
-      "name": "Blip 5",
-      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
-      "video": "https://www.youtube.com/watch?v=L-g27xGxejA&t=1s",
-      "descricao": "Personagem Animado.",
-      "categoria": "Desenho",
+      "name": "3 Palavrinhas",
+      "img": "https://ik.imagekit.io/imgpl/i1/tr:h-757/cd/2013/trespalavrinhas_3palavrinhas_2917.jpg",
+      "video": "https://www.youtube.com/watch?v=fZ4ljNGbJkk&t=2s",
+      "descricao": "Musicas Crista infantil para festa",
+      "categoria": "Musica",
       "id": 9
     },
     {
-      "name": "3 Palavrinhas",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Musica Infantil",
-      "categoria": "Filme",
+      "name": "Bita",
+      "img": "https://th.bing.com/th/id/R.029dfd57ecbb962ecb4d0a022726ba6a?rik=5I%2fGqdwLoy67Xg&riu=http%3a%2f%2fwww.semprematerna.com.br%2fwp-content%2fuploads%2f2017%2f11%2fMundo-Bita_-Divulgacao.jpg&ehk=b3x1QSJYXQZ4GxHH1n3Pdzx0GOhNqyVAHlDGSiGkC50%3d&risl=&pid=ImgRaw&r=0",
+      "video": "https://youtu.be/8b8MX2TpCaQ",
+      "descricao": "Mundo bita, musica infantil",
+      "categoria": "Musica",
       "id": 10
     },
     {
-      "name": "Patrulha Canina",
-      "img": "https://th.bing.com/th/id/R.0ee336a783fbda2c0e221ee0be9c04ff?rik=QbSN0Tytab7sHg&pid=ImgRaw&r=0",
-      "video": "https://www.youtube.com/watch?v=Hdy9EgNCXOY",
-      "descricao": "Desenho Patrulha Canina",
-      "categoria": "Filme",
+      "name": "Heroi",
+      "img": "https://i.pinimg.com/564x/10/94/de/1094de464630af4227f3a4b74da66f7d.jpg",
+      "video": "https://www.youtube.com/watch?v=e88YcG8Iz_I",
+      "descricao": "Aprendendo os numeros",
+      "categoria": "Musica",
       "id": 11
     },
     {
-      "name": "Blip 5",
-      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
-      "video": "https://www.youtube.com/watch?v=L-g27xGxejA&t=1s",
-      "descricao": "Personagem Animado.",
-      "categoria": "Desenho",
+      "name": "Numeros",
+      "img": "https://i2.wp.com/www.imageneseducativas.com/wp-content/uploads/2018/04/Numeros-guiados-para-trabajar-en-infantil-10.jpg?fit=720%2C1040&ssl=1",
+      "video": "https://www.youtube.com/watch?v=0SaEafWL5ek",
+      "descricao": "Aprenda Numeros",
+      "categoria": "Musica",
       "id": 12
     },
     {
-      "name": "Blip 5",
-      "img": "https://th.bing.com/th/id/OIP.q0SmXnSXN6WdvLt0bbkyKAAAAA?pid=ImgDet&rs=1",
-      "video": "https://www.youtube.com/watch?v=L-g27xGxejA&t=1s",
-      "descricao": "Personagem Animado.",
+      "name": "AEIOU",
+      "img": "https://i1.sndcdn.com/artworks-IGk9wi8hrSlA-0-t500x500.jpg",
+      "video": "https://www.youtube.com/watch?v=cKh2WYBbV0g",
+      "descricao": "Aprenda Aieou",
       "categoria": "Musica",
       "id": 13
     },
     {
-      "name": "3 Palavrinhas",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Musica Infantil",
-      "categoria": "Filme",
+      "name": "Cores",
+      "img": "https://i.ytimg.com/vi/_1sZZ8BMzHA/maxresdefault.jpg",
+      "video": "https://www.youtube.com/watch?v=_1sZZ8BMzHA&t=717s",
+      "descricao": "Aprenda Cores",
+      "categoria": "Musica",
       "id": 14
     },
     {
-      "name": "3 Palavrinhas",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Musica Infantil",
+      "name": "Jumbo",
+      "img": "https://th.bing.com/th/id/OIP.FRMYeQyI-EJrAnf-SONDPQHaHa?pid=ImgDet&rs=1",
+      "video": "https://www.youtube.com/watch?v=zHOxiETNNOA",
+      "descricao": "Filme Jumbo Completo",
       "categoria": "Filme",
       "id": 15
     },
     {
-      "name": "3 Palavrinhas",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Musica Infantil",
-      "categoria": "Musica",
+      "name": "Insetos 2",
+      "img": "https://i.pinimg.com/originals/15/b3/15/15b315a5fc7467ddd9fbf0cb7354daad.jpg",
+      "video": "https://www.youtube.com/watch?v=E9AJ3Vz5Gpc",
+      "descricao": "Vida de Insetos 2",
+      "categoria": "Filme",
       "id": 16
     },
     {
-      "name": "3 Palavrinhas",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Musica Infantil",
-      "categoria": "Musica",
+      "name": "Princesa",
+      "img": "https://th.bing.com/th/id/OIP.1czyh4u96Dc6CeylZALX_AHaHl?pid=ImgDet&rs=1",
+      "video": "https://www.youtube.com/watch?v=fZIei6JaKNI&pp=ygUZZmlsbWVzIGluZmFudGlsIGNvbXBsZXRvIA%3D%3D",
+      "descricao": "Princesa e O Dragao ",
+      "categoria": "Filme",
       "id": 17
     },
     {
-      "name": "3 Palav",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Testando",
-      "categoria": "Desenho",
+      "name": "Rei Leao",
+      "img": "https://th.bing.com/th/id/OIP.2DDbHPQKFbl08hMdxzzs9gHaJr?pid=ImgDet&rs=1",
+      "video": "https://www.youtube.com/watch?v=hL97vUwltso",
+      "descricao": "Rei Leao",
+      "categoria": "Filme",
       "id": 18
     },
     {
-      "name": "ramon",
-      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
-      "video": "https://youtu.be/Rm4__WgPncI",
-      "descricao": "t4est",
-      "categoria": "Musica",
+      "name": "Leão de Juda",
+      "img": "https://th.bing.com/th/id/OIP.UPHXzujvVCjZRqV-cBJNEAHaLH?pid=ImgDet&rs=1",
+      "video": "https://www.youtube.com/watch?v=-gp-6vwwOn8",
+      "descricao": "Leao de Juda",
+      "categoria": "Filme",
       "id": 19
     },
     {
-      "name": "R22",
-      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
-      "video": "https://youtu.be/Rm4__WgPncI",
-      "descricao": "213",
-      "categoria": "Musica",
+      "name": "Stitch",
+      "img": "https://th.bing.com/th/id/OIP.XpRQ1gPkLi6j2OoMbJcqLQHaLH?pid=ImgDet&rs=1",
+      "video": "https://www.youtube.com/watch?v=PzkP78onuAc",
+      "descricao": "Filme infantil",
+      "categoria": "Filme",
       "id": 20
-    },
-    {
-      "name": "R22",
-      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
-      "video": "https://youtu.be/Rm4__WgPncI",
-      "descricao": "213",
-      "categoria": "Educativo",
-      "id": 21
-    },
-    {
-      "name": "R22",
-      "img": "https://avatars.githubusercontent.com/u/117538661?v=4",
-      "video": "https://youtu.be/Rm4__WgPncI",
-      "descricao": "213",
-      "categoria": "Educativo",
-      "id": 22
-    },
-    {
-      "name": "3 Palav",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Testando",
-      "categoria": "Desenho",
-      "id": 23
-    },
-    {
-      "name": "3 Palav",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Testando",
-      "categoria": "Desenho",
-      "id": 24
-    },
-    {
-      "name": "3 Palav",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Testando",
-      "categoria": "Desenho",
-      "id": 25
-    },
-    {
-      "name": "3 Palav",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Testando",
-      "categoria": "Desenho",
-      "id": 26
-    },
-    {
-      "name": "3 Palav",
-      "img": "https://studiosol-a.akamaihd.net/uploadfile/letras/albuns/2/a/2/d/829401577974659.jpg",
-      "video": "https://youtu.be/WPZ6FKKoGo0",
-      "descricao": "Testando",
-      "categoria": "Desenho",
-      "id": 27
-    },
-    {
-      "name": "Samon",
-      "img": "https://github.com/RamonRodSou.png",
-      "video": "https://github.com/RamonRodSou.png",
-      "descricao": "asdasdasdas",
-      "categoria": "Nova",
-      "id": 28
     }
   ],
   "categoria": [
@@ -271,14 +207,6 @@
     {
       "categoriaName": "Filme",
       "id": 3
-    },
-    {
-      "categoriaName": "Nova",
-      "id": 4
-    },
-    {
-      "categoriaName": "mais nova",
-      "id": 5
     }
   ]
 }

@@ -1,7 +1,7 @@
 nav {
 
 
-position: relative;
+position: absolute;
 z-index: 1;
 text-shadow: 2px 2px 5px black;
 width: 100vw;
@@ -17,7 +17,9 @@ text-align: center;
 align-items: center;
 justify-content: space-around;
 background-color: #ffffff00;
+flex-wrap: wrap;
 
+border-top-left-radius:2 ;
 box-sizing: border-box;
 
 }

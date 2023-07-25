@@ -31,7 +31,9 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
     
     const Post = () => {
 
-        const url = 'http://localhost:3001/produto'
+        // const url = 'http://localhost:3001/produto/'
+        const url = 'https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/'
+
         const dadosVideo = {
             
             name: name,
@@ -68,7 +70,9 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
 
             const fetchData = async () => {
                 try {
-                const responseCategorias = await axios.get('http://localhost:3001/categoria');
+                // const responseCategorias = await axios.get('http://localhost:3001/categoria/');
+                const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
+
                 setCategorias(responseCategorias.data);
 
                 } catch (error) {

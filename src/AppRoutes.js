@@ -1,52 +1,35 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./index.css"
 import Footer from './Footer/Footer';
 import HeaderPrincipal from "./HeaderPrincipal/HeaderPrincipal";
 import { Banner } from "./Banner/Banner";
 import Categoria from "./Categoria/Categoria";
-import { Flex } from "@chakra-ui/react";
-import axios from "axios";
+import { Box, Flex} from "@chakra-ui/react";
+import Videos from "./Video/Video";
 
 export default function AppRoutes() {
-
-  const [categorias, setCategorias] = useState([]);
-
-  useEffect(() => {
-    
-    const fetchData = async () => {
-        try {
-        const responseCategorias = await axios.get('http://localhost:3001/categoria');
-        setCategorias(responseCategorias.data);
-
-        } catch (error) {
-        console.error('Erro ao obter os dados do JSON:', error);
-        alert('Erro no AppRoutes.');
-        }
-    };
   
-  fetchData();
-  }, []);
+  const desenho = 'Desenho';
+  const filme = 'Filme';
+  const musica = 'Musica';
+
   return (
 
     <BrowserRouter>
-    <Flex flexDirection="column" justifyContent="space-between" > 
-      <HeaderPrincipal/>
-      <Routes>
-        <Route path="/" element={<Banner/>}>
-          <Route path="/" element={<Categoria/>}/>
-        </Route>
-
-        {categorias.map((categoria) => (
-          <Route
-            key={categoria.id}
-            path={categoria.categoriaName}
-            element={<Categoria categorias={categorias} />}
-          />
-        ))}
-      </Routes>
-      
-      <Footer/>
+      <Flex flexDirection="column" style={{ minHeight: "100vh", backgroundColor:"black"}}>
+        <HeaderPrincipal />
+        <Box flexGrow={1}>
+          <Routes>
+            <Route path="/" element={<Banner/>}>
+              <Route path="/" element={<Categoria/>}/>
+            </Route>
+            <Route path="/Desenho" element={<Videos categoria={desenho}/>} />
+            <Route path="/Filme" element={<Videos categoria={filme}/>} />
+            <Route path="/Musica" element={<Videos categoria={musica}/>} /> 
+          </Routes>
+        </Box>
+        <Footer />
       </Flex>
     </BrowserRouter>
   );
