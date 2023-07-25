@@ -3,10 +3,12 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from 'framer-motion';
 import { ChakraProvider, Flex } from "@chakra-ui/react";
-import LinkNav from "../LinkNav/LinkNav";
 import ImgplayPng from './play.png'
 import AbrirModalVideo from "../AbrirModal/AbrirModalVideo";
-
+import { NavLink } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const CategoriaVideo= styled(motion.section)`
 
@@ -38,9 +40,8 @@ const VideosDiv = styled(motion.div)`
 const TituloSec = styled.h1`
 
     color: #fff ;
-    font-size:1rem;
+    font-size:1.5rem;
     font-weight:700;
-    text-shadow: 2px 3px 5px #fefefe, -1px -3px 5px #fefefe;
 
 `;
 
@@ -101,6 +102,17 @@ const VerTudo = {
   padding:'5px',
   background: 'red'
 }
+
+const settings = {
+  infinite: true, // Enable infinite loop
+  slidesToShow: 3, // Number of visible slides at once
+  slidesToScroll: 1, // Number of slides to scroll on each navigation
+  autoplay: true, // Enable automatic sliding
+  speed: 2000, // Slide transition speed in milliseconds
+  autoplaySpeed: 5000, // Time between slides during automatic sliding
+  cssEase: "linear", // Slide transition CSS easing function
+};
+
 export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
@@ -137,8 +149,11 @@ export default function Categoria () {
     
       return match ? match[1] : "";
     };
+
+    
     return (
         <CategoriaVideo>
+        
         {categorias.map((categoria) => (
           <VideosSec 
                     key={categoria.id}
@@ -148,16 +163,16 @@ export default function Categoria () {
 
             <Flex key={categoria.id} alignItems='center' justifyContent='space-between' margin='1rem 1rem 0.5rem' >
               <TituloSec >{categoria.categoriaName}</TituloSec>
-              <LinkNav style={VerTudo} textShadow='#fefefe' to={categoria.categoriaName} >Ver Tudo</LinkNav>
+              <NavLink style={VerTudo} textShadow='#fefefe' to={categoria.categoriaName} >Ver Tudo</NavLink>
             </Flex>
 
             <VideosDiv
-                drag='x' 
-                dragConstraints={{ right: 0, left: -width }}
-                dragElastic={0.8}
-                initial={{ x: 100 }}
-                animate={{ x: 0 }}
-                transition={{ duration: 0.8 }}
+                // drag='x' 
+                // dragConstraints={{ right: 0, left: -width }}
+                // dragElastic={0.8}
+                // initial={{ x: 100 }}
+                // animate={{ x: 0 }}
+                // transition={{ duration: 0.8 }}
             >
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)

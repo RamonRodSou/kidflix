@@ -4,6 +4,8 @@ import { styled } from 'styled-components';
 
 
 const LogoSt = styled.img`
+  border-radius:5px ;
+
 `;
 
 

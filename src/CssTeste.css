@@ -19,6 +19,7 @@ justify-content: space-around;
 background-color: #ffffff00;
 flex-wrap: wrap;
 
+border-radius:10px ;
 border-top-left-radius:2 ;
 box-sizing: border-box;
 

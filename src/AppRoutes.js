@@ -24,9 +24,9 @@ export default function AppRoutes() {
             <Route path="/" element={<Banner/>}>
               <Route path="/" element={<Categoria/>}/>
             </Route>
-            <Route path="/Desenho" element={<Videos categoria={desenho}/>} />
-            <Route path="/Filme" element={<Videos categoria={filme}/>} />
-            <Route path="/Musica" element={<Videos categoria={musica}/>} /> 
+              <Route path="/Desenho" element={<Videos categoria={desenho}/>} />
+              <Route path="/Filme" element={<Videos categoria={filme}/>} />
+              <Route path="/Musica" element={<Videos categoria={musica}/>} /> 
           </Routes>
         </Box>
         <Footer />

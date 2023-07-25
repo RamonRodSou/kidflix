@@ -15,9 +15,9 @@ const BannerContainer = styled.div`
 
 const BannerInicial = styled.img`
   width: 100%;
-  height: calc(100% - 65px);
+  height:40vh;
   word-wrap: break-word;
-
+  border-radius:10px;
 
   @media (min-width: 768px) {
     height: 80vh;
@@ -33,8 +33,11 @@ const BannerGradient = styled.div`
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.4) 80%,
-    rgba(0, 0, 0, 0.9) 100%
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.4) 70%,
+    rgba(0, 0, 0, 0.6) 80%,
+    rgba(0, 0, 0, 0.8) 90%,
+    rgba(0, 0, 0, 1) 100%
 
   );
 `;
@@ -43,21 +46,19 @@ const LogoMeio = styled.div`
 
     position: relative;
     height: 0;
-    top:-1.5rem;
+    top:-2rem;
     color: #ffffff;
     text-shadow: 2px 3px 5px black;
     display:flex;
     align-items: center;
     justify-content: center;
-    
+    gap:0.5rem;
 `;
   
 
 const Titulo = styled.p`
 
     text-shadow: 2px 3px 5px black;
-    margin:0;
-
 `;
 
 export function Banner () {
@@ -72,7 +73,7 @@ export function Banner () {
                 <LogoPrincipal
                     className="LogoBannerCss"
                 />
-                <Titulo>Desenhos</Titulo>
+                <Titulo>KidFlix</Titulo>
             </LogoMeio>
             <Outlet/>
         </VideoBanner>

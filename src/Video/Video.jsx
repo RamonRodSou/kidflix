@@ -31,11 +31,12 @@ const VideoProduto = styled(motion.div)`
 
 const ImgVideo = styled.img`
     
-    min-width:100%;
-    min-height:100%;
-    height:120px;
-    border-radius: 5px;
-    pointer-events:none;
+min-width:100%;
+min-height:100%;
+height:120px;
+border-top-left-radius: 5px;
+border-top-right-radius: 5px;
+pointer-events:none;
     
 `;
 
@@ -55,7 +56,8 @@ const TituloVideo = styled.p`
     margin:0;
 
     background-color:#FF4C4C;
-    border-radius:2px;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
     color: #FFFFFF;
     text-shadow: 2px 3px 5px black;
     text-align:center;
@@ -66,7 +68,7 @@ const TituloVideo = styled.p`
 
 `;
 
-export default function Videos ({categoria, style}) {
+export default function Videos ({categoria}) {
 
     const [produtos, setProdutos] = useState([]);
   

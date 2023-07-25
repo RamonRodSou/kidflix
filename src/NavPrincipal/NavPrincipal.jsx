@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import React from "react";
-import LinkNav from "../LinkNav/LinkNav";
 import { ChakraProvider } from "@chakra-ui/react";
 import AbrirModal from "../AbrirModal/AbrirModal";
+import { NavLink } from "react-router-dom";
 
 const UlPrincipal = styled.nav`
 
@@ -17,7 +17,7 @@ const UlPrincipal = styled.nav`
 
 }
 
-`
+`;
 
 const styles = {
   color: 'white',
@@ -31,9 +31,9 @@ export function Navegacao  () {
   return (
 
       <UlPrincipal>
-        <LinkNav style={styles} to="/desenho">Desenho</LinkNav>
-        <LinkNav style={styles} to="/filme">Filme</LinkNav>
-        <LinkNav style={styles} to="/musica">Musica</LinkNav>
+        <NavLink style={styles} to="/desenho">Desenho</NavLink>
+        <NavLink style={styles} to="/filme">Filme</NavLink>
+        <NavLink style={styles} to="/musica">Musica</NavLink>
         <ChakraProvider>
           <AbrirModal> Add </AbrirModal>
         </ChakraProvider>

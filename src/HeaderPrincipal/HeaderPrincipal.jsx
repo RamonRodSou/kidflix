@@ -3,25 +3,30 @@ import { LogoPrincipal } from "../Logo/Logo";
 import React, { useEffect, useState } from "react";
 import "./HeaderPrincipal.css";
 import { Navegacao } from "../NavPrincipal/NavPrincipal";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const InicioNav = styled.header`
   display: flex;
   align-items: center;
   width: 100%;
   margin: 0.5rem 0;
-  background-color: #ff000009;
   position: absolute;
   z-index: 1;
   transition: background-color 0.3s ease;
 
   &.fixed {
     position: fixed;
-    background-color: #FF0000;
+    background-color: #000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin:0;
     padding: 0.5rem 0;
 
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0.8) 100%
+  
+    );
 
   }
 
@@ -54,7 +59,7 @@ export default function HeaderPrincipal() {
 
   return (
     <InicioNav className={`inicio-nav ${isFixed ? "fixed" : ""}`}>
-      <Link
+      <NavLink
         to="/" 
         style={{
           height: "50px",
@@ -63,7 +68,7 @@ export default function HeaderPrincipal() {
         }}
       >
         <LogoPrincipal className="LogoInicialCss" />
-      </Link>
+      </NavLink>
       <Navegacao/>
     </InicioNav>
   );
