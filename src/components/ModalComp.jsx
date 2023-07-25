@@ -11,9 +11,11 @@ import {    Modal,
             Input,
             Box,
             Select,
+            Text,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { isValidImageUrl, isValidName, isValidYouTubeUrl } from "../context/validacaoFunction";
 
 export default function ModalComp ({dataEdit,isOpen,onClose}) {
    
@@ -28,8 +30,79 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
     const [isVisible, setIsVisible] = useState(true);
     const [notVisible, setNotVisible] = useState(false);
 
+    const [categoriaError, setCategoriaError] = useState("");
+
+    const [errorMessages, setErrorMessages] = useState({
+        name: "",
+        img: "",
+        video: "",
+        categoria: "",
+      });
     
+    const validateForm = () => {
+    let isValid = true;
+    const newErrorMessages = {};
+
+    if (!name) {
+        newErrorMessages.name = "Campo obrigatório.";
+        isValid = false;
+    } else if (!isValidName(name)) {
+        newErrorMessages.name = "Nome deve conter no mínimo 3 letras e no máximo 15.";
+        isValid = false;
+    }
+
+    if (!img) {
+        newErrorMessages.img = "Campo obrigatório.";
+        isValid = false;
+    } else if (!isValidImageUrl(img)) {
+        newErrorMessages.img = "URL de imagem inválida.";
+        isValid = false;
+    }
+
+    if (!video) {
+        newErrorMessages.video = "Campo obrigatório.";
+        isValid = false;
+    } else if (!isValidYouTubeUrl(video)) {
+        newErrorMessages.video = "URL de vídeo inválida.";
+        isValid = false;
+    }
+
+    if (!descricao) {
+        newErrorMessages.descricao = "Campo obrigatório.";
+        isValid = false;
+        }else if (!isValidName(descricao)) {   
+        newErrorMessages.descricao = "Descricao deve conter no mínimo 3 letras e no máximo 15.";
+        isValid = false;
+    }
+
+    if (!categoria) {
+        setCategoriaError("Escolha uma categoria válida.");
+        return;
+        }
+
+    setErrorMessages(newErrorMessages);
+    return isValid
+    };
+          
+    const validateNewCategoria = () => {
+
+        let isValid = true;
+        const newErrorMessages = {};
+        
+        if (!categoriaName) {
+            newErrorMessages.categoriaName = "Campo obrigatório.";
+            isValid = false;
+          }else if (!isValidName(categoriaName)) {
+              newErrorMessages.categoriaName = "Categoria deve conter no mínimo 3 letras e no máximo 15.";
+              isValid = false;
+        }
+
+        setErrorMessages(newErrorMessages);
+        return isValid
+  
+    }
     const Post = () => {
+        if (validateForm()) {
 
         // const url = 'http://localhost:3001/produto/'
         const url = 'https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/'
@@ -50,9 +123,12 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
             })
         .catch(error => console.log(error))
     }
+    };
 
     const PostNovaCategoria = () => {
 
+        if(validateNewCategoria()){     
+            
         const urlCategoria = 'http://localhost:3001/categoria '
         const dadosCategoria = {
             categoriaName: categoriaName,
@@ -63,29 +139,27 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
             alert(categoriaName + ' adicionada com sucesso')
             onClose()
         })
-        .catch(error => console.log(error))
-        }
+        .catch(error => console.log(error))}
+    }
 
-        useEffect(() => {
+    useEffect(() => {
 
-            const fetchData = async () => {
-                try {
-                // const responseCategorias = await axios.get('http://localhost:3001/categoria/');
-                const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
+        const fetchData = async () => {
+            try {
+            const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
 
-                setCategorias(responseCategorias.data);
+            setCategorias(responseCategorias.data);
 
-                } catch (error) {
-                console.error('Erro ao obter os dados do JSON:', error);
-                alert('Erro no Modal.');
-                }
-            };
+            } catch (error) {
+            console.error('Erro ao obter os dados do JSON:', error);
+            alert('Erro no Modal.');
+            }
+        };
 
-        fetchData();
-        }, []);
+    fetchData();
+    }, []);
 
     function NovaCategoria () {
-
         setIsVisible(!isVisible);
         setNotVisible(!notVisible);
     }
@@ -106,12 +180,16 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                             <Box>
                                 <FormLabel>Nome</FormLabel>
                                 <Input 
-                                    type="text"
-                                    required
+                                    type="name"
                                     value={name} 
                                     placeholder="Nome do vídeo"
                                     onChange={(event) => setName(event.target.value)}
                                 />
+                                {errorMessages.name && (
+                                    <Text color="red" fontSize="sm">
+                                    {errorMessages.name}
+                                    </Text>
+                                )}
                             </Box>
                             <Box>
                                 <FormLabel>Imagem </FormLabel>
@@ -119,8 +197,12 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                     value={img}
                                     placeholder="Link da imagem"
                                     onChange={(event) => setImg(event.target.value)}
-                                    required
                                 />
+                                {errorMessages.img && (
+                                    <Text color="red" fontSize="sm">
+                                    {errorMessages.img}
+                                    </Text>
+                                )}
                             </Box>
                             <Box>
                                 <FormLabel>Video</FormLabel>
@@ -128,8 +210,12 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                     value={video}
                                     placeholder="Link do Youtube"
                                     onChange={(event) => setVideo(event.target.value)}
-                                    required
                                 />
+                                {errorMessages.video && (
+                                    <Text color="red" fontSize="sm">
+                                    {errorMessages.video}
+                                    </Text>
+                                )}
                             </Box>
                             <Box>
                                 <FormLabel>Descrição</FormLabel>
@@ -137,8 +223,12 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                     value={descricao}
                                     placeholder="Descrção do vídeo"
                                     onChange={(event) => setDescricao(event.target.value)}
-                                    required
                                 />
+                            {errorMessages.descricao && (
+                                <Text color="red" fontSize="sm">
+                                {errorMessages.descricao}
+                                </Text>
+                            )}
                             </Box>
                             <Box>
                                 <FormLabel>Categoria</FormLabel>
@@ -149,8 +239,10 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                     bg='tomato'
                                     borderColor='tomato'
                                     color='black'
-                                    required
-                                    onChange={(event) => setCategoria(event.target.value)}
+                                    onChange={(event) => {
+                                        setCategoria(event.target.value);
+                                        setCategoriaError(""); 
+                                      }}
                                 >
                                 {categorias
                                     .map(categoria => 
@@ -161,6 +253,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                             {categoria.categoriaName}
                                         </option>)}
                                 </Select>
+                                {categoriaError && <Text color="red" fontSize="sm">{categoriaError}</Text>}
                             </Box>
                         </FormControl>}
         {notVisible &&   <FormControl 
@@ -174,8 +267,12 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                     value={categoriaName}
                                     placeholder="Nova Categoria"
                                     onChange={(event) => setCategoriaName(event.target.value)}
-                                    required
                                 />
+                            {errorMessages.categoriaName && (
+                                <Text color="red" fontSize="sm">
+                                {errorMessages.categoriaName}
+                                </Text>
+                            )}
                             </Box>
                         </FormControl>}
                     </ModalBody>

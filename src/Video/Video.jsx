@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { motion } from 'framer-motion';
 import { ChakraProvider } from "@chakra-ui/react";
@@ -69,8 +69,6 @@ const TituloVideo = styled.p`
 export default function Videos ({categoria, style}) {
 
     const [produtos, setProdutos] = useState([]);
-    const [width, setWidth] = useState(0)
-    const carrosel = useRef({})
   
     useEffect(() => {
     
@@ -80,10 +78,6 @@ export default function Videos ({categoria, style}) {
             const responseProdutos = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/');
 
             setProdutos(responseProdutos.data);
-
-            console.log(carrosel.current?.scrollWidth, carrosel.current?.offsetWidth)
-            setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
-    
             } catch (error) {
             console.error('Erro ao obter os dados do JSON:', error);
             alert('Erro no Categoria.jsx.');

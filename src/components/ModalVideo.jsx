@@ -1,6 +1,6 @@
 import React from "react";
 import YouTube from "react-youtube";
-import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, Button } from "@chakra-ui/react";
+import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from "@chakra-ui/react";
 
 
 export default function ModalVideo ({ isOpen, onClose, videoId  }) {
