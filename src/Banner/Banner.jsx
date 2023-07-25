@@ -17,7 +17,6 @@ const BannerInicial = styled.img`
   width: 100%;
   height:40vh;
   word-wrap: break-word;
-  border-radius:10px;
 
   @media (min-width: 768px) {
     height: 80vh;
