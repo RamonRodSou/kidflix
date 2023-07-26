@@ -101,11 +101,15 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         return isValid
   
     }
-    const Post = () => {
-        if (validateForm()) {
+    //const url = 'http://localhost:3001/produto/'
+    //const urlCategoria = 'http://localhost:3001/categoria '
 
-        // const url = 'http://localhost:3001/produto/'
-        const url = 'https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/'
+    const url = 'https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/'
+    const urlCategoria = 'https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/'
+
+    const Post = () => {
+        
+        if (validateForm()) {
 
         const dadosVideo = {
             
@@ -117,6 +121,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         }
         
         axios.post(url, dadosVideo)
+
         .then(() =>{
             alert(name + ' adicionado com sucesso na categoria ' + categoria)
             onClose()
@@ -129,12 +134,12 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
 
         if(validateNewCategoria()){     
             
-        const urlCategoria = 'http://localhost:3001/categoria '
         const dadosCategoria = {
             categoriaName: categoriaName,
         }
 
         axios.post(urlCategoria, dadosCategoria)
+
         .then(()=>{
             alert(categoriaName + ' adicionada com sucesso')
             onClose()
@@ -146,7 +151,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
 
         const fetchData = async () => {
             try {
-            const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
+            const responseCategorias = await axios.get(urlCategoria);
 
             setCategorias(responseCategorias.data);
 
