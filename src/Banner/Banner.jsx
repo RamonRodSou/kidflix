@@ -52,12 +52,19 @@ const LogoMeio = styled.div`
     align-items: center;
     justify-content: center;
     gap:0.5rem;
+
 `;
   
 
 const Titulo = styled.p`
 
     text-shadow: 2px 3px 5px black;
+
+    @media (min-width: 768px) {
+      
+      font-size:1.5rem;
+        
+      }
 `;
 
 export function Banner () {

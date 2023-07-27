@@ -33,6 +33,22 @@ const VideosDiv = styled(motion.div)`
     margin:0 1rem;
     width:100%;
     min-width:600px;
+
+    
+    @media (min-width: 768px) {
+      
+      min-width:1100px;
+      height:225px;
+
+    }
+
+    @media (min-width: 1024px) {
+      
+      min-width:1400px;
+      height: 325px;
+      
+    }
+    
 `;
 
 const TituloSec = styled.h1`
@@ -41,6 +57,17 @@ const TituloSec = styled.h1`
     font-size:1.5rem;
     font-weight:700;
 
+    @media (min-width: 768px) {
+      
+      font-size:2rem;
+
+    }
+
+    @media (min-width: 1024px) {
+      
+      font-size:3rem;
+
+    }
 `;
 
 const VideoProduto = styled(motion.div)`
@@ -50,6 +77,24 @@ const VideoProduto = styled(motion.div)`
     min-height: 120px;
     position:relative;
     margin-bottom: 1rem;
+
+    @media (min-width: 768px) {
+      
+      width:150px;
+      min-width:150px;
+      height: 200px;
+      min-height: 200px;
+      
+    }
+
+    @media (min-width: 1024px) {
+      
+      width:250px;
+      min-width:250px;
+      height: 300px;
+      min-height: 300px;
+      
+    }
 
 `;
 
@@ -61,10 +106,17 @@ const ImgVideo = styled.img`
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     pointer-events:none;
+
+    @media (min-width: 768px) {
+      
+      height: 200px;
+      
+    }
     
 `;
 
 const ImgPlay = {
+
     width:'40px',
     position: 'absolute',
     top: '35%',
@@ -89,6 +141,12 @@ const TituloVideo = styled.p`
     font-weight: 400;
     text-shadow: 2px 3px 5px black, -1px -2px 5px black;
 
+
+    @media (min-width: 768px) {
+      
+    font-size:1rem;
+      
+    }
 `;
 
 const VerTudo = {
@@ -100,6 +158,16 @@ const VerTudo = {
   padding:'5px',
   background: 'red'
 }
+
+
+if (window.innerWidth >= 768) {
+
+  // ImgPlay.width = '60px';
+  // VerTudo.fontSize = '1rem';
+
+}
+
+
 export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
