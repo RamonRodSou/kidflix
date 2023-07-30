@@ -174,31 +174,26 @@ export default function Categoria () {
       background: 'red'
     }
 
-    function styleResponsive (){
-      const handleResize = () => {
-        
-        if (window.innerWidth >= 768) {
-          setFontSize('1rem');
-          setWidthResponse('4.5rem');
-        } else {
-          setFontSize('0.5rem');
-          setWidthResponse('3.5rem');
-        }
-
-        if (window.innerWidth >= 1024) {
-          setWidthResponse('6.5rem');
-        } else {
-          setWidthResponse('3.5rem');
-        }
-      };
     
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }
+    const applyResponsiveStyles = () => {
+      if (window.innerWidth >= 1024) {
+        setFontSize("1rem");
+        setWidthResponse("6.5rem");
+      } 
+
+      else if (window.innerWidth >= 768) {
+        setFontSize("1rem");
+        setWidthResponse("4.5rem");
+      } 
+      else {
+        setFontSize("0.5rem");
+        setWidthResponse("3.5rem");
+      }
+    };
+
 
     useEffect(() => {
-      
-      styleResponsive ();
+
 
         const fetchData = async () => {
             try {
@@ -219,6 +214,17 @@ export default function Categoria () {
         };
   
       fetchData();
+
+      applyResponsiveStyles();
+
+      const handleResize = () => {
+        applyResponsiveStyles();
+      };
+  
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+
+
     }, []);
 
     const getYouTubeID = (url) => {

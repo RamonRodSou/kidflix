@@ -37,8 +37,8 @@ const BannerGradient = styled.div`
     rgba(0, 0, 0, 0.6) 80%,
     rgba(0, 0, 0, 0.8) 90%,
     rgba(0, 0, 0, 1) 100%
-
-  );
+  ); 
+  
 `;
 
 const LogoMeio = styled.div`
