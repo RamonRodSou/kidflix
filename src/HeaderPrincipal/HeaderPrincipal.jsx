@@ -31,7 +31,8 @@ const InicioNav = styled.header`
   }
 
   @media (min-width: 768px) {
-    /* Add any specific styles for larger screens if needed */
+
+
   }
 `;
 

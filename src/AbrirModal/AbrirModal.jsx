@@ -17,37 +17,48 @@ import OpenModalDynamic from '../components/OpenModal';
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [data, setData] = useState([]);
     const [dataEdit, setDataEdit] = useState({});
+
+    const [fontSize, setFontSize] = useState('1rem');
+    const [padding, setPadding] = useState('0.5rem')
+
   
     useEffect(() => {
+
       const db_costumer = localStorage.getItem("produto")
         ? JSON.parse(localStorage.getItem("produto"))
         : [];
-  
-      setData(db_costumer);
+        setData(db_costumer);
+
+        mudaStyleResponsive()
+
     }, [setData]);
-  
-      // const isMobile = useBreakpointValue({ 
-  
-    //   base: true,
-    //   lg: false,
-    // });
-  
-    // const handleRemove = (video) => {
-    //   const newArray = data.filter((item) => item.video !== video);
-  
-    //   setData(newArray);
-  
-    //   localStorage.setItem("produto", JSON.stringify(newArray));
-    // };
-    
+
+    function mudaStyleResponsive (){
+      const handleResize = () => {
+        
+        if (window.innerWidth >= 768) {
+          setFontSize('1.5rem');
+          setPadding('1rem')
+        } else {
+          setFontSize('1rem');
+          setPadding('0.5rem')
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+
+
     const style = {
+      
       height: '24px',
       lineHeight: '1.2',
       transition: 'all 0.2s cubic-bezier(.08,.52,.52,1)',
       borderRadius: '4px',
       boxShadow: 'rgb(17, 17, 17) 2px 3px 5px',
-      padding: '0.5rem',
-      fontSize: '1rem',
+      padding: padding,
+      fontSize: fontSize, 
       fontWeight: 'medium',
       background: '#ff0000',
       color: '#fff',
@@ -57,6 +68,7 @@ import OpenModalDynamic from '../components/OpenModal';
         transform: 'scale(0.98)'
       }
     };
+
 
     return (
       <Flex

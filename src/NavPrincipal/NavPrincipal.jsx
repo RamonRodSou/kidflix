@@ -13,9 +13,10 @@ const UlPrincipal = styled.nav`
     justify-content: space-around;
     
 
-@media (min-width: 768px) {
+    @media (min-width: 768px) {
 
-}
+      font-size:1.5rem;
+    }
 
 `;
 
@@ -24,6 +25,7 @@ const styles = {
   textDecoration: "inherit",
   textShadow: "2px 3px 5px shadowColor",
   textAlign: "center"
+  
 };
 
 
@@ -35,7 +37,7 @@ export function Navegacao  () {
         <NavLink style={styles} to="/filme">Filme</NavLink>
         <NavLink style={styles} to="/musica">Musica</NavLink>
         <ChakraProvider>
-          <AbrirModal> Add </AbrirModal>
+          <AbrirModal/>
         </ChakraProvider>
 
       </UlPrincipal> 

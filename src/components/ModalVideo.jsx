@@ -11,6 +11,7 @@ export default function ModalVideo ({ isOpen, onClose, videoId  }) {
     width: "100%",
     playerVars: {
       autoplay: 1,
+      rel: 0,
     },
   };
 
@@ -20,7 +21,9 @@ export default function ModalVideo ({ isOpen, onClose, videoId  }) {
       <ModalContent  bg=''>
         <ModalCloseButton color='#FFF' bg='red' right='5' top='9'/>
         <ModalBody  marginTop='2rem'>
-          <YouTube  videoId={videoId} opts={opts}/>
+          <YouTube 
+              videoId={videoId} 
+              opts={opts}/>
         </ModalBody>
       </ModalContent>
     </Modal>
