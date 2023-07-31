@@ -116,11 +116,11 @@ export function Banner () {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 2000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true, 
-    autoplaySpeed: 5000, 
+    autoplaySpeed: 400, 
     fade: 300, 
     cssEase: "linear",
     arrows: false,
@@ -132,7 +132,6 @@ export function Banner () {
                 {/* <BannerInicial src={ImgBanner} alt={ImgBanner} /> */}
                 <Slider {...settings}>
              { imgBanner.map((item) => (
-              
                  <BannerDiv key={item.id}>
                   <BannerGradient />
                     <BannerInicial src={item.img} alt={ImgBanner} />
