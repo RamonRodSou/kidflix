@@ -1,169 +1,158 @@
 import { styled } from "styled-components";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { motion } from 'framer-motion';
 import { ChakraProvider, Flex } from "@chakra-ui/react";
 import ImgplayPng from './play.png'
 import AbrirModalVideo from "../AbrirModal/AbrirModalVideo";
 import { NavLink } from "react-router-dom";
+import Slider from "react-slick";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+const CategoriaVideo= styled.section`
+
+  display:flex;
+  flex-direction:column;
+  background-color:black;
+
+  @media (min-width: 1024px) {
+      
+    // gap:3rem;
+  }
+`;
+const VideosSec = styled.div`
+
+  display:flex;
+
+  flex-direction:column;
+  overflow: hidden;
+  cursor:grab;
+  width:100%;
+
+
+  @media (min-width: 1024px) {
+    
+    margin-bottom: 4rem;
+  }
+`;
+const TituloSec = styled.h1`
+
+  color: #fff ;
+  font-size:1.5rem;
+  font-weight:700;
+
+  @media (min-width: 768px) {
+    
+    font-size:2rem;
+
+  }
+
+  @media (min-width: 1024px) {
+    
+    font-size:3rem;
+
+  }
+`;
+const VideoProduto = styled.div`
+  width:90px;
+  min-width:90px;
+  position:relative;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+
+  @media (min-width: 768px) {
+    
+    width:150px;
+    min-width:150px;
+    height: 200px;
+    min-height: 200px;
+    
+  }
+
+  @media (min-width: 1024px) {
+    
+    width:250px;
+    min-width:250px;
+    height: 300px;
+    min-height: 300px;
+    
+  }
+
+`;
+const ImgVideo = styled.img`
+  
+  min-width:100%;
+  min-height:100%;
+  height:120px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  pointer-events:none;
+  opacity:0.5;
+
+  @media (min-width: 768px) {
+    
+    height: 200px;
+    
+  }
+  @media (min-width: 1024px) {
+    
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+`
+const TituloVideo = styled.p`
+  position: relative;
+  bottom:0 ;
+  margin:0;
+
+  background-color:#FF4C4C;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  color: #FFFFFF;
+  text-shadow: 2px 3px 5px black;
+  text-align:center;
+
+  font-size:10px;
+  font-weight: 400;
+  text-shadow: 2px 3px 5px black, -1px -2px 5px black;
+
+
+    @media (min-width: 768px) {
+      
+      font-size:1rem;
+    }
+    
+    @media (min-width: 1024px) {
+      
+        font-size:1.5rem;
+    }
+`;
+const getYouTubeID = (url) => {
+  const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
+  const match = url.match(regex);
+
+  return match ? match[1] : "";
+};
 
 export default function Categoria () {
 
     const [categorias, setCategorias] = useState([]);
     const [produtos, setProdutos] = useState([]);
-    const [width, setWidth] = useState(0)
-    const carrosel = useRef({})
     const [fontSize, setFontSize] = useState('1rem');
     const [widthResponse, setWidthResponse] = useState('3.5rem')
+    const [videosNaTela, setVideosNaTela] = useState(3)
 
-    const CategoriaVideo= styled(motion.section)`
 
-      display:flex;
-      flex-direction:column;
-      background-color:black;
-
-      @media (min-width: 1024px) {
-          
-        gap:3rem;
-      }
-    `;
-    const VideosSec = styled(motion.div)`
-
-        display:flex;
-
-        flex-direction:column;
-        overflow: hidden;
-        cursor:grab;
-        width:100%;
-
-        @media (min-width: 1024px) {
-          
-        
-        }
-    `;
-    const VideosDiv = styled(motion.div)`
-
-        display:flex;
-        gap:0.5rem;
-        margin:0 1rem;
-        width:100%;
-        min-width:600px;
-
-        
-        @media (min-width: 768px) {
-          
-          min-width:1100px;
-          height:225px;
-
-        }
-
-        @media (min-width: 1024px) {
-          
-          min-width:1400px;
-          height: 335px;
-          
-        }
-        
-    `;
-    const TituloSec = styled.h1`
-
-        color: #fff ;
-        font-size:1.5rem;
-        font-weight:700;
-
-        @media (min-width: 768px) {
-          
-          font-size:2rem;
-
-        }
-
-        @media (min-width: 1024px) {
-          
-          font-size:3rem;
-
-        }
-    `;
-    const VideoProduto = styled(motion.div)`
-        width:90px;
-        min-width:90px;
-        height: 120px;
-        min-height: 120px;
-        position:relative;
-        margin-bottom: 1rem;
-
-        @media (min-width: 768px) {
-          
-          width:150px;
-          min-width:150px;
-          height: 200px;
-          min-height: 200px;
-          
-        }
-
-        @media (min-width: 1024px) {
-          
-          width:250px;
-          min-width:250px;
-          height: 300px;
-          min-height: 300px;
-          
-        }
-
-    `;
-    const ImgVideo = styled.img`
-        
-        min-width:100%;
-        min-height:100%;
-        height:120px;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        pointer-events:none;
-        opacity:0.5;
-
-        @media (min-width: 768px) {
-          
-          height: 200px;
-          
-        }
-        
-    `;
     const ImgPlay = {
 
-        width:widthResponse,
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform:' translate(-50%, -50%)',
-        cursor:'pointer',
-        
-    }
-    const TituloVideo = styled.p`
-        position: relative;
-        bottom:0 ;
-        margin:0;
-
-        background-color:#FF4C4C;
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
-        color: #FFFFFF;
-        text-shadow: 2px 3px 5px black;
-        text-align:center;
-
-        font-size:10px;
-        font-weight: 400;
-        text-shadow: 2px 3px 5px black, -1px -2px 5px black;
-
-
-          @media (min-width: 768px) {
-            
-            font-size:1rem;
-          }
-          
-          @media (min-width: 1024px) {
-            
-              font-size:1.5rem;
-          }
-    `;
+      width:widthResponse,
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform:' translate(-50%, -50%)',
+      cursor:'pointer',
+      
+    };
     const VerTudo = {
       color: '#fff',
       fontSize:fontSize,
@@ -172,90 +161,88 @@ export default function Categoria () {
       borderRadius:"10px",
       padding:'5px',
       background: 'red'
-    }
-
-    
+    };
+    const SliderStyled = {
+      display:'flex',
+      padding:'0 1rem',
+      overflow: 'hidden',
+    };
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: videosNaTela,
+      slidesToScroll: 2,
+      arrows: false,
+    };
     const applyResponsiveStyles = () => {
-      if (window.innerWidth >= 1024) {
+
+      if (window.innerWidth >= 1465) {
         setFontSize("1rem");
         setWidthResponse("6.5rem");
+        setVideosNaTela(6);
       } 
 
+      else if (window.innerWidth >= 1247) {
+        setFontSize("1rem");
+        setWidthResponse("6.5rem");
+        setVideosNaTela(5);
+
+      } 
       else if (window.innerWidth >= 768) {
         setFontSize("1rem");
         setWidthResponse("4.5rem");
+        setVideosNaTela(4);
       } 
       else {
         setFontSize("0.5rem");
         setWidthResponse("3.5rem");
+        setVideosNaTela(3);
       }
     };
 
-
     useEffect(() => {
 
-
-        const fetchData = async () => {
-            try {
-            // const responseCategorias = await axios.get('http://localhost:3001/categoria/');
-            const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
-            setCategorias(responseCategorias.data)
-
-            // const responseProdutos = await axios.get('http://localhost:3001/produto/');
-            const responseProdutos = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/');
-            setProdutos(responseProdutos.data)
-
-            setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth)
+      const fetchData = async () => {
+          try {
+          // const responseCategorias = await axios.get('http://localhost:3001/categoria/');
+          const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
+          setCategorias(responseCategorias.data)
     
-            } catch (error) {
-            console.error('Erro ao obter os dados do JSON:', error);
-            alert('Erro no Categoria.jsx.');
-            }
-        };
-  
-      fetchData();
-
-      applyResponsiveStyles();
-
-      const handleResize = () => {
-        applyResponsiveStyles();
+          // const responseProdutos = await axios.get('http://localhost:3001/produto/');
+          const responseProdutos = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/');
+          setProdutos(responseProdutos.data)
+        
+          } catch (error) {
+          console.error('Erro ao obter os dados do JSON:', error);
+          alert('Erro no Categoria.jsx.');
+          }
       };
-  
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-
-
-    }, []);
-
-    const getYouTubeID = (url) => {
-      const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
-      const match = url.match(regex);
     
-      return match ? match[1] : "";
+    fetchData();
+    
+    applyResponsiveStyles();
+    
+    const handleResize = () => {
+      applyResponsiveStyles();
     };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     return (
         <CategoriaVideo>
         {categorias.map((categoria) => (
           <VideosSec 
                     key={categoria.id}
-                    ref={carrosel}
-                    whileTap={{ cursor: 'grabbing' }}
           >
-
             <Flex key={categoria.id} alignItems='center' justifyContent='space-between' margin='1rem 1rem 0.5rem' >
               <TituloSec >{categoria.categoriaName}</TituloSec>
-              <NavLink style={VerTudo} textShadow='#fefefe' to={categoria.categoriaName} >Ver Tudo</NavLink>
+              <NavLink style={VerTudo}  to={categoria.categoriaName} >Ver Tudo</NavLink>
             </Flex>
 
-            <VideosDiv
-                drag='x' 
-                dragConstraints={{ right: 0, left: -width }}
-                dragElastic={0.8}
-                initial={{ x: 100 }}
-                animate={{ x: 0 }}
-                transition={{ duration: 0.8 }}
-            >
+            <Slider {...settings} style={SliderStyled}>
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)
                 .map((produto) => (
@@ -269,34 +256,10 @@ export default function Categoria () {
                     <TituloVideo>{produto.name}</TituloVideo>
                   </VideoProduto>
                 ))}
-            </VideosDiv>
+            </Slider >
           </VideosSec>
         ))}
       </CategoriaVideo>
     );
   };
   
-
-
-  // Quando for na tela no PC a Imagem vai ser a Imagem do Proprio Video
-
-//   Implemnentar isso no codigo
-
-// const VideoProduto = styled(motion.div)`
-// width:100px;
-// min-width:200px;
-// height: 200px;
-// min-height: 120px;
-// position:relative;
-// margin-bottom: 1rem;
-
-// `;
-
-// const ThumbnailVideo = styled.img`
-// min-width: 100%;
-// min-height: 100%;
-// border-radius: 5px;
-// pointer-events: none;
-// `;
-
-// <ThumbnailVideo src={`https://img.youtube.com/vi/${getYouTubeID(produto.video)}/hqdefault.jpg`} alt={produto.name} />          

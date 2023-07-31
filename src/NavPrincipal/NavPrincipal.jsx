@@ -23,7 +23,7 @@ const UlPrincipal = styled.nav`
 const styles = {
   color: 'white',
   textDecoration: "inherit",
-  textShadow: "2px 3px 5px shadowColor",
+  textShado: "2px 3px 5px shadowColor",
   textAlign: "center"
   
 };

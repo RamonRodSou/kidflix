@@ -38,6 +38,9 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         video: "",
         categoria: "",
       });
+
+    const [widthResponse, setWidthResponse] = useState('90%')
+
     
     const validateForm = () => {
     let isValid = true;
@@ -147,6 +150,24 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         .catch(error => console.log(error))}
     }
 
+    const applyResponsiveStyles = () => {
+
+        if (window.innerWidth >= 1465) {
+          setWidthResponse("40%");
+        } 
+    
+        else if (window.innerWidth >= 1247) {
+          setWidthResponse("50%");
+    
+        } 
+        else if (window.innerWidth >= 768) {
+          setWidthResponse("80%");
+        } 
+        else {
+          setWidthResponse("90%");
+        }
+      };
+
     useEffect(() => {
 
         const fetchData = async () => {
@@ -162,6 +183,14 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         };
 
     fetchData();
+    applyResponsiveStyles();
+    
+    const handleResize = () => {
+      applyResponsiveStyles();
+    };
+    
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
     }, []);
 
     function NovaCategoria () {
@@ -171,9 +200,13 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
     
     return (
         <>
-            <Modal isOpen={isOpen} onClose={onClose} >
-                <ModalOverlay/>
-                <ModalContent maxW="90%">
+            <Modal isOpen={isOpen} onClose={onClose} isCentered size="lg">
+            <ModalOverlay       
+                bg='none'
+                backdropFilter='blur(3px)'
+                zIndex="modalOverlay"
+            />
+                <ModalContent maxW={widthResponse}>
     {isVisible &&<ModalHeader>Novo Video</ModalHeader>}
     {notVisible &&<ModalHeader>Nova Categoria</ModalHeader>}
                     <ModalCloseButton/>

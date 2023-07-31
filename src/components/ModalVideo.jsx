@@ -1,29 +1,77 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from "@chakra-ui/react";
 
 
 export default function ModalVideo ({ isOpen, onClose, videoId  }) {
 
-  const opts = {
+  const [widthResponse, setWidthResponse] = useState('90%')
+  // const [heighthResponse, setHeightResponse] = useState('90%')
 
-    height: "300px",
+  const opts = {
     width: "100%",
+    height:"400px",
+    margin:"0",
+    padding:"0",
     playerVars: {
       autoplay: 1,
       rel: 0,
+      origin: window.location.origin,
+      host: window.location.origin,
+
     },
   };
 
+  const applyResponsiveStyles = () => {
+
+    if (window.innerWidth >= 1465) {
+      setWidthResponse("50%");
+      // setHeightResponse("600px");
+    } 
+
+    else if (window.innerWidth >= 1247) {
+      setWidthResponse("60%");
+      // setHeightResponse("500px");
+    } 
+    else if (window.innerWidth >= 768) {
+      setWidthResponse("70%");
+      // setHeightResponse("400px");
+
+    } 
+    else {
+      setWidthResponse("90%");
+      // setHeightResponse("350%");
+    }
+  };
+
+  useEffect(() => {
+  
+  applyResponsiveStyles();
+  
+  const handleResize = () => {
+    applyResponsiveStyles();
+  };
+  
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl" >
-      <ModalOverlay />
-      <ModalContent  bg=''>
-        <ModalCloseButton color='#FFF' bg='red' right='5' top='9'/>
-        <ModalBody  marginTop='2rem'>
+    <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl" >
+      <ModalOverlay       
+        bg='none'
+        backdropFilter='blur(3px)'
+        zIndex="modalOverlay"
+      />
+      <ModalContent  maxW={widthResponse}  bg='#fff' margin='0' padding='0'>
+        <ModalCloseButton color='#FFF' bg='red' right='-1' top='-1'/>
+        <ModalBody margin='0' padding='0'>
           <YouTube 
               videoId={videoId} 
               opts={opts}/>
+              
         </ModalBody>
       </ModalContent>
     </Modal>
