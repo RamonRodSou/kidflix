@@ -4,7 +4,7 @@ import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from "
 import ResponsiveStyle from "../Hooks/useEffect";
 
 
-export default function ModalVideo ({ isOpen, onClose, videoId, videoUrl  }) {
+export default function ModalVideo ({ isOpen, onClose, videoId  }) {
 
   const [widthResponse, setWidthResponse] = useState('90%')
   // const [heighthResponse, setHeightResponse] = useState('90%')
@@ -59,7 +59,6 @@ export default function ModalVideo ({ isOpen, onClose, videoId, videoUrl  }) {
         <ModalBody margin='0' padding='0'>
           <YouTube 
               videoId={videoId}  
-              videoUrl={videoUrl}
               opts={opts}/>
               
         </ModalBody>
