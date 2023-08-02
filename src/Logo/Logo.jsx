@@ -14,7 +14,7 @@ export function LogoPrincipal  ({ className }) {
   return (
 
         <LogoSt                            
-          className= {className} 
+          className={className} 
           src={LogoImg} 
           alt={LogoImg}
         />

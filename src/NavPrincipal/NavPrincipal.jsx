@@ -89,9 +89,9 @@ const UlPrincipal = styled.nav`
 
 `; 
 const LoadingMensagem = styled.span` 
- position: absolute;
- top:50px;
+    
 `;
+
 const styles = {
   color: 'white',
   textDecoration: "inherit",
@@ -102,11 +102,7 @@ const styles = {
 export function Navegacao  () {
 
   const categoriasData = useGetVideo(urlCategoria);
-  const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
-
-  if (loadingCategorias) {
-    return <LoadingMensagem>Loading...</LoadingMensagem>;
-  }
+  const { data: categorias, error: errorCategorias } = categoriasData;
 
   if (errorCategorias) {
     return <div>Error fetching data.</div>;

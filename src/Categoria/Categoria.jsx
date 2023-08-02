@@ -10,6 +10,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import useGetVideo from "../Hooks/useGetVideo";
 import ResponsiveStyle from "../Hooks/useEffect";
 import { urlCategoria, urlProduto } from "../context/GetUrl";
+import InfoIcon from '@mui/icons-material/Info';
+import AbrirModalDescricao from "../AbrirModal/AbrirModaDescricao";
 
 const CategoriaVideo= styled.section`
 
@@ -77,7 +79,7 @@ const VideoProduto = styled.div`
     min-width:250px;
     height: 300px;
     min-height: 300px;
-    
+
   }
 
 `;
@@ -101,7 +103,7 @@ const ImgVideo = styled.img`
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
-`
+`;
 const TituloVideo = styled.p`
   position: relative;
   bottom:0 ;
@@ -130,9 +132,21 @@ const TituloVideo = styled.p`
     }
 `;
 const LoadingMensagem = styled.span` 
-    margin:1rem;
-    color:#fff;
-    `;
+  margin:1rem;
+  color:#fff;
+`;
+const IconWrapper = styled.div`
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2; /* Garante que o ícone fique à frente dos outros elementos */
+
+`;
+
 const getYouTubeID = (url) => {
   const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
   const match = url.match(regex);
@@ -179,6 +193,7 @@ export default function Categoria () {
       slidesToScroll: 2,
       arrows: false,
     };
+    
     const applyResponsiveStyles = () => {
 
       if (window.innerWidth >= 1465) {
@@ -240,6 +255,13 @@ export default function Categoria () {
                   <VideoProduto key={produto.id}>
                     <ImgVideo src={produto.img} alt={produto.name} />
                       <ChakraProvider>
+                        <AbrirModalDescricao descricao={produto.descricao} name={produto.name}>
+                          <IconWrapper>
+                            <InfoIcon color="disabled"/>
+                          </IconWrapper>
+                        </AbrirModalDescricao>
+                      <ChakraProvider>
+                      </ChakraProvider>
                         <AbrirModalVideo estilo={ImgPlay} videoId={getYouTubeID(produto.video)}>
                             <img src={ImgplayPng} alt='Imagem Play' style={ImgPlay}/>
                         </AbrirModalVideo>
