@@ -65,10 +65,6 @@
 
 
 
-
-
-
-
 import styled from "styled-components";
 import React from "react";
 import { ChakraProvider } from "@chakra-ui/react";
@@ -92,7 +88,10 @@ const UlPrincipal = styled.nav`
     }
 
 `; 
-
+const LoadingMensagem = styled.span` 
+ position: absolute;
+ top:50px;
+`;
 const styles = {
   color: 'white',
   textDecoration: "inherit",
@@ -100,16 +99,13 @@ const styles = {
   textAlign: "center"
   
 };
-
-
 export function Navegacao  () {
 
   const categoriasData = useGetVideo(urlCategoria);
-
   const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
 
   if (loadingCategorias) {
-    return <div>Loading...</div>;
+    return <LoadingMensagem>Loading...</LoadingMensagem>;
   }
 
   if (errorCategorias) {

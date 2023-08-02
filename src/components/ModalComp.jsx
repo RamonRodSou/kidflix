@@ -19,6 +19,7 @@ import { isValidImageUrl, isValidName, isValidYouTubeUrl } from "../context/vali
 import ResponsiveStyle from "../Hooks/useEffect";
 import useGetVideo from "../Hooks/useGetVideo";
 import { urlCategoria, urlProduto } from "../context/GetUrl";
+import { styled } from "styled-components";
 
 export default function ModalComp ({dataEdit,isOpen,onClose}) {
    
@@ -42,7 +43,15 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
       });
 
     const [widthResponse, setWidthResponse] = useState('90%')
+ 
 
+    const LoadingMensagem = styled.span` 
+    position: absolute;
+    top:50px;
+    left:0;
+    margin:1rem;
+    color:#fff;
+    `;
     
     const validateForm = () => {
     let isValid = true;
@@ -169,8 +178,8 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
       const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
     
       if (loadingCategorias) {
-        return <div>Loading...</div>;
-      }
+        return <LoadingMensagem>Loading...</LoadingMensagem>;
+      } 
     
       if (errorCategorias) {
         return <div>Error fetching data.</div>;

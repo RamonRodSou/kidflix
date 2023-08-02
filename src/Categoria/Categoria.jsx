@@ -129,6 +129,10 @@ const TituloVideo = styled.p`
         font-size:1.5rem;
     }
 `;
+const LoadingMensagem = styled.span` 
+    margin:1rem;
+    color:#fff;
+    `;
 const getYouTubeID = (url) => {
   const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
   const match = url.match(regex);
@@ -211,7 +215,7 @@ export default function Categoria () {
     const { data: produtos, loading: loadingProdutos, error: errorProdutos } = produtosData;
   
     if (loadingCategorias || loadingProdutos) {
-      return <div>Loading...</div>;
+      return <LoadingMensagem>Loading...</LoadingMensagem>;
     }
   
     if (errorCategorias || errorProdutos) {
