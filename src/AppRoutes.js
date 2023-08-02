@@ -7,12 +7,22 @@ import { Banner } from "./Banner/Banner";
 import Categoria from "./Categoria/Categoria";
 import { Box, Flex} from "@chakra-ui/react";
 import Videos from "./Video/Video";
+import { urlCategoria } from "./context/GetUrl";
+import useGetVideo from "./Hooks/useGetVideo";
 
 export default function AppRoutes() {
-  
-  const desenho = 'Desenho';
-  const filme = 'Filme';
-  const musica = 'Musica';
+
+  const categoriasData = useGetVideo(urlCategoria);
+
+  const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
+
+  if (loadingCategorias) {
+    return <div>Loading...</div>;
+  }
+
+  if (errorCategorias) {
+    return <div>Error fetching data.</div>;
+  }
 
   return (
 
@@ -21,12 +31,20 @@ export default function AppRoutes() {
         <HeaderPrincipal />
         <Box flexGrow={1}>
           <Routes>
-            <Route path="/" element={<Banner/>}>
-              <Route path="/" element={<Categoria/>}/>
+            <Route path="/" element={<Banner />}>
+              <Route
+                index
+                element={<Categoria categorias={categorias} />}
+              />
             </Route>
-              <Route path="/Desenho" element={<Videos categoria={desenho}/>} />
-              <Route path="/Filme" element={<Videos categoria={filme}/>} />
-              <Route path="/Musica" element={<Videos categoria={musica}/>} /> 
+            {/* Mapear as rotas para cada categoria */}
+            {categorias.map((categoria) => (
+              <Route
+                key={categoria.id}
+                path={`/${categoria.categoriaName}`}
+                element={<Videos categoria={categoria.categoriaName} />}
+              />
+            ))}
           </Routes>
         </Box>
         <Footer />

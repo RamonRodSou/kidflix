@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import YouTube from "react-youtube";
 import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from "@chakra-ui/react";
+import ResponsiveStyle from "../Hooks/useEffect";
 
 
-export default function ModalVideo ({ isOpen, onClose, videoId  }) {
+export default function ModalVideo ({ isOpen, onClose, videoId, videoUrl  }) {
 
   const [widthResponse, setWidthResponse] = useState('90%')
   // const [heighthResponse, setHeightResponse] = useState('90%')
@@ -44,19 +45,7 @@ export default function ModalVideo ({ isOpen, onClose, videoId  }) {
     }
   };
 
-  useEffect(() => {
-  
-  applyResponsiveStyles();
-  
-  const handleResize = () => {
-    applyResponsiveStyles();
-  };
-  
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-
+  ResponsiveStyle(applyResponsiveStyles)
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl" >
@@ -69,7 +58,8 @@ export default function ModalVideo ({ isOpen, onClose, videoId  }) {
         <ModalCloseButton color='#FFF' bg='red' right='-1' top='-1'/>
         <ModalBody margin='0' padding='0'>
           <YouTube 
-              videoId={videoId} 
+              videoId={videoId}  
+              videoUrl={videoUrl}
               opts={opts}/>
               
         </ModalBody>

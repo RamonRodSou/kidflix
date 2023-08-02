@@ -13,9 +13,12 @@ import {    Modal,
             Select,
             Text,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { isValidImageUrl, isValidName, isValidYouTubeUrl } from "../context/validacaoFunction";
+import ResponsiveStyle from "../Hooks/useEffect";
+import useGetVideo from "../Hooks/useGetVideo";
+import { urlCategoria, urlProduto } from "../context/GetUrl";
 
 export default function ModalComp ({dataEdit,isOpen,onClose}) {
    
@@ -26,7 +29,6 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
     const [categoria, setCategoria] = useState(dataEdit.categoria || "");
     const [categoriaName, setCategoriaName] = useState(dataEdit.categoria || "");
 
-    const [categorias, setCategorias] = useState([]);
     const [isVisible, setIsVisible] = useState(true);
     const [notVisible, setNotVisible] = useState(false);
 
@@ -104,12 +106,6 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         return isValid
   
     }
-    //const url = 'http://localhost:3001/produto/'
-    //const urlCategoria = 'http://localhost:3001/categoria '
-
-    const url = 'https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/'
-    const urlCategoria = 'https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/'
-
     const Post = () => {
         
         if (validateForm()) {
@@ -123,7 +119,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
             categoria:categoria
         }
         
-        axios.post(url, dadosVideo)
+        axios.post(urlProduto, dadosVideo)
 
         .then(() =>{
             alert(name + ' adicionado com sucesso na categoria ' + categoria)
@@ -132,7 +128,6 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         .catch(error => console.log(error))
     }
     };
-
     const PostNovaCategoria = () => {
 
         if(validateNewCategoria()){     
@@ -149,7 +144,6 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         })
         .catch(error => console.log(error))}
     }
-
     const applyResponsiveStyles = () => {
 
         if (window.innerWidth >= 1465) {
@@ -168,30 +162,19 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         }
       };
 
-    useEffect(() => {
+      ResponsiveStyle(applyResponsiveStyles)
 
-        const fetchData = async () => {
-            try {
-            const responseCategorias = await axios.get(urlCategoria);
-
-            setCategorias(responseCategorias.data);
-
-            } catch (error) {
-            console.error('Erro ao obter os dados do JSON:', error);
-            alert('Erro no Modal.');
-            }
-        };
-
-    fetchData();
-    applyResponsiveStyles();
+      const categoriasData = useGetVideo(urlCategoria);
+  
+      const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
     
-    const handleResize = () => {
-      applyResponsiveStyles();
-    };
+      if (loadingCategorias) {
+        return <div>Loading...</div>;
+      }
     
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-    }, []);
+      if (errorCategorias) {
+        return <div>Error fetching data.</div>;
+      }
 
     function NovaCategoria () {
         setIsVisible(!isVisible);

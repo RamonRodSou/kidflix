@@ -1,15 +1,14 @@
 import { styled } from "styled-components";
 import "./Banner.css"
-import ImgBanner from "../Banner/Banner.jpg";
-import React, { useEffect, useState } from "react";
 import { LogoPrincipal } from "../Logo/Logo";
 import { Outlet } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import axios from "axios";
-import { Button, ChakraProvider } from "@chakra-ui/react";
-import AbrirModalVideo from "../AbrirModal/AbrirModalVideo";
+import useGetVideo from "../Hooks/useGetVideo";
+import React from "react";
+import { urlProduto } from "../context/GetUrl";
+
 
 const VideoBanner = styled.section`
 `;
@@ -87,57 +86,57 @@ const AssitirVideo = styled.div`
 
 `;
 
-
-
 export function Banner () {
 
-  const [imgBanner, setImgBanner] = useState([]);
+  const produtosData = useGetVideo(urlProduto);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const responseImg = await axios.get("https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/");
-        setImgBanner(responseImg.data)
 
-      } catch (error) {
-        console.error("Erro ao obter os dados:", error);
-      }
-    };
+  const { data: produtos, loading: loadingProdutos, error: errorProdutos } = produtosData;
 
-    fetchData();
-  }, []);
+  if (loadingProdutos) {
+    return <div>Loading...</div>;
+  }
 
- const getYouTubeID = (url) => {
-    const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
-    const match = url.match(regex);
+  if (errorProdutos) {
+    return <div>Error fetching data.</div>;
+  }
+
+//  const getYouTubeID = (url) => {
+//     const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
+//     const match = url.match(regex);
   
-    return match ? match[1] : "";
-  };
+//     return match ? match[1] : "";
+
+//   };
+
   const settings = {
     dots: true,
     infinite: true,
-    speed: 2000,
+    speed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true, 
-    autoplaySpeed: 400, 
-    fade: 300, 
+    autoplaySpeed: 3000, 
+    fade: 2000, 
     cssEase: "linear",
     arrows: false,
   };
 
+
     return (
         <VideoBanner>
             <BannerContainer>
-                {/* <BannerInicial src={ImgBanner} alt={ImgBanner} /> */}
+                {/* <BannerInicial src={ImgBanner} alt={ImgBanner} /> */} 
                 <Slider {...settings}>
-             { imgBanner.map((item) => (
-                 <BannerDiv key={item.id}>
+
+             { produtos.map
+             ((produto) => (
+                 <BannerDiv key={produto.id}>
                   <BannerGradient />
-                    <BannerInicial src={item.img} alt={ImgBanner} />
+                    <BannerInicial src={produto.img} alt={produto.name} />
                     <AssitirVideo>
-                       <ChakraProvider>
-                        <AbrirModalVideo videoId={getYouTubeID(item.video)}>
+                      {/* <ChakraProvider>
+                        <AbrirModalVideo videoId={getYouTubeID(produto.video)} videoUrl={produto.id}>
                           <Button 
                                   p="0.2rem 0.3rem" 
                                   bg="rgb(255, 0, 0)" 
@@ -147,10 +146,11 @@ export function Banner () {
                             Assistir
                           </Button>
                         </AbrirModalVideo>
-                        </ChakraProvider>
+                      </ChakraProvider> */}
                     </AssitirVideo>
                   </BannerDiv>
                 )) }
+
                 </Slider>
             </BannerContainer>
 

@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { ChakraProvider, Flex } from "@chakra-ui/react";
 import ImgplayPng from './play.png'
 import AbrirModalVideo from "../AbrirModal/AbrirModalVideo";
@@ -8,6 +7,9 @@ import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import useGetVideo from "../Hooks/useGetVideo";
+import ResponsiveStyle from "../Hooks/useEffect";
+import { urlCategoria, urlProduto } from "../context/GetUrl";
 
 const CategoriaVideo= styled.section`
 
@@ -136,8 +138,6 @@ const getYouTubeID = (url) => {
 
 export default function Categoria () {
 
-    const [categorias, setCategorias] = useState([]);
-    const [produtos, setProdutos] = useState([]);
     const [fontSize, setFontSize] = useState('1rem');
     const [widthResponse, setWidthResponse] = useState('3.5rem')
     const [videosNaTela, setVideosNaTela] = useState(3)
@@ -150,7 +150,7 @@ export default function Categoria () {
       top: '50%',
       left: '50%',
       transform:' translate(-50%, -50%)',
-      cursor:'pointer',
+      cursor:'pointer', 
       
     };
     const VerTudo = {
@@ -201,35 +201,22 @@ export default function Categoria () {
       }
     };
 
-    useEffect(() => {
+    ResponsiveStyle(applyResponsiveStyles)
 
-      const fetchData = async () => {
-          try {
-          // const responseCategorias = await axios.get('http://localhost:3001/categoria/');
-          const responseCategorias = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/categoria/');
-          setCategorias(responseCategorias.data)
-    
-          // const responseProdutos = await axios.get('http://localhost:3001/produto/');
-          const responseProdutos = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/');
-          setProdutos(responseProdutos.data)
-        
-          } catch (error) {
-          console.error('Erro ao obter os dados do JSON:', error);
-          alert('Erro no Categoria.jsx.');
-          }
-      };
-    
-    fetchData();
-    
-    applyResponsiveStyles();
-    
-    const handleResize = () => {
-      applyResponsiveStyles();
-    };
-    
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-    }, []);
+  
+    const categoriasData = useGetVideo(urlCategoria);
+    const produtosData = useGetVideo(urlProduto);
+
+    const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
+    const { data: produtos, loading: loadingProdutos, error: errorProdutos } = produtosData;
+  
+    if (loadingCategorias || loadingProdutos) {
+      return <div>Loading...</div>;
+    }
+  
+    if (errorCategorias || errorProdutos) {
+      return <div>Error fetching data.</div>;
+    }
 
     return (
         <CategoriaVideo>

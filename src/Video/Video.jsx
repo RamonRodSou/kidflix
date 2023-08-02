@@ -1,10 +1,12 @@
 import { styled } from "styled-components";
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { motion } from 'framer-motion';
 import { ChakraProvider } from "@chakra-ui/react";
 import ImgplayPng from './play.png'
 import AbrirModalVideo from "../AbrirModal/AbrirModalVideo";
+import ResponsiveStyle from "../Hooks/useEffect";
+import useGetVideo from "../Hooks/useGetVideo";
+import { urlProduto } from "../context/GetUrl";
 
 const VideosDiv = styled(motion.div)`
     
@@ -42,51 +44,50 @@ const VideoProduto = styled(motion.div)`
       min-height: 300px;
       
     }
-  
+
 `;
 
 const ImgVideo = styled.img`
     
-min-width:100%;
-min-height:100%;
-height:120px;
-border-top-left-radius: 5px;
-border-top-right-radius: 5px;
-pointer-events:none;
+  min-width:100%;
+  min-height:100%;
+  height:120px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  pointer-events:none;
     
 `;
 
 const TituloVideo = styled.p`
-position: relative;
-bottom:0 ;
-margin:0;
+  position: relative;
+  bottom:0 ;
+  margin:0;
 
-background-color:#FF4C4C;
-border-bottom-left-radius: 2px;
-border-bottom-right-radius: 2px;
-color: #FFFFFF;
-text-shadow: 2px 3px 5px black;
-text-align:center;
+  background-color:#FF4C4C;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  color: #FFFFFF;
+  text-shadow: 2px 3px 5px black;
+  text-align:center;
 
-font-size:10px;
-font-weight: 400;
-text-shadow: 2px 3px 5px black, -1px -2px 5px black;
+  font-size:10px;
+  font-weight: 400;
+  text-shadow: 2px 3px 5px black, -1px -2px 5px black;
 
 
-  @media (min-width: 768px) {
+    @media (min-width: 768px) {
+      
+      font-size:1rem;
+    }
     
-    font-size:1rem;
-  }
-  
-  @media (min-width: 1024px) {
-    
-      font-size:1.5rem;
-  }
+    @media (min-width: 1024px) {
+      
+        font-size:1.5rem;
+    }
 `;
 
 export default function Videos ({categoria}) {
 
-    const [produtos, setProdutos] = useState([]);
     const [widthResponse, setWidthResponse] = useState('3.5rem')
 
     const applyResponsiveStyles = () => {
@@ -107,31 +108,19 @@ export default function Videos ({categoria}) {
       }
     };
 
-    useEffect(() => {
-    
-        const fetchData = async () => {
-            try {
-            // const responseProdutos = await axios.get('http://localhost:3001/produto/');
-            const responseProdutos = await axios.get('https://my-json-server.typicode.com/RamonRodSou/AluraFlixdb/produto/');
+    ResponsiveStyle(applyResponsiveStyles)
 
-            setProdutos(responseProdutos.data);
-            } catch (error) {
-            console.error('Erro ao obter os dados do JSON:', error);
-            alert('Erro no Categoria.jsx.');
-            }
-        };
+    const produtosData = useGetVideo(urlProduto);
+
+    const { data: produtos, loading: loadingProdutos, error: errorProdutos } = produtosData;
   
-      fetchData();
-
-      applyResponsiveStyles();
-    
-      const handleResize = () => {
-        applyResponsiveStyles();
-      };
-      
-      window.addEventListener("resize", handleResize);
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    if (loadingProdutos) {
+      return <div>Loading...</div>;
+    }
+  
+    if (errorProdutos) {
+      return <div>Error fetching data.</div>;
+    }
 
     const getYouTubeID = (url) => {
       const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
