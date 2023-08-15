@@ -8,7 +8,7 @@ import { useState } from "react";
 import OpenModalDynamic from '../components/OpenModal';
 import ModalDescricao from '../components/ModalDescricao';
   
-  export default function AbrirModalDescricao ({ children, estilo, descricao, name }) {
+  export default function AbrirModalDescricao ({ children, estilo, descricao, name, idade }) {
   
   
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,6 +43,7 @@ import ModalDescricao from '../components/ModalDescricao';
             setDataEdit={setDataEdit}
             descricao={descricao}
             name={name}
+            idade={idade}
 
           />
         )}

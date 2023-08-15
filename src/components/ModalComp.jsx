@@ -15,7 +15,7 @@ import {    Modal,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios";
-import { isValidImageUrl, isValidName, isValidYouTubeUrl } from "../context/validacaoFunction";
+import { isValidIdade, isValidImageUrl, isValidName, isValidYouTubeUrl } from "../context/validacaoFunction";
 import ResponsiveStyle from "../Hooks/useEffect";
 import useGetVideo from "../Hooks/useGetVideo";
 import { urlCategoria, urlProduto } from "../context/GetUrl";
@@ -27,6 +27,8 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
     const [img, setImg] = useState(dataEdit.img || "");
     const [video, setVideo] = useState(dataEdit.video || "");
     const [descricao, setDescricao] = useState(dataEdit.descricao || "");
+    const [idade, setIdade] = useState(dataEdit.idade || "");
+
     const [categoria, setCategoria] = useState(dataEdit.categoria || "");
     const [categoriaName, setCategoriaName] = useState(dataEdit.categoria || "");
 
@@ -86,6 +88,14 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
         isValid = false;
         }else if (!isValidName(descricao)) {   
         newErrorMessages.descricao = "Descricao deve conter no mínimo 3 letras e no máximo 15.";
+        isValid = false;
+    }
+
+    if (!idade) {
+        newErrorMessages.idade = "Campo obrigatório.";
+        isValid = false;
+        }else if (!isValidIdade(idade)) {   
+        newErrorMessages.idade = "Idade minima de 1 ano.";
         isValid = false;
     }
 
@@ -253,6 +263,19 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                     value={descricao}
                                     placeholder="Descrção do vídeo"
                                     onChange={(event) => setDescricao(event.target.value)}
+                                />
+                            {errorMessages.descricao && (
+                                <Text color="red" fontSize="sm">
+                                {errorMessages.descricao}
+                                </Text>
+                            )}
+                            </Box>
+                            <Box>
+                                <FormLabel>Faixa Etaria</FormLabel>
+                                <Input type="number"
+                                    value={idade}
+                                    placeholder="Idade mínima"
+                                    onChange={(event) => setIdade(event.target.value)}
                                 />
                             {errorMessages.descricao && (
                                 <Text color="red" fontSize="sm">

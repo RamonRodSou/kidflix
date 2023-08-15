@@ -3,7 +3,7 @@ import { Modal, ModalOverlay, ModalContent, ModalBody, ModalHeader, ModalFooter,
 import { LogoPrincipal } from "../Logo/Logo";
 import "./ModalDescricao.css";
 
-export default function ModalDescricao ({ isOpen, onClose, descricao, name  }) {
+export default function ModalDescricao ({ isOpen, onClose, descricao, name, idade  }) {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} isCentered size="xs" >
@@ -20,7 +20,8 @@ export default function ModalDescricao ({ isOpen, onClose, descricao, name  }) {
             </Flex>
         </ModalHeader>
         <ModalBody margin=' 0.5rem 1.5rem' padding='0'>
-            <Flex alignItems='center' justifyContent='flex-start'>
+            <Flex alignItems='flex-start' justifyContent='flex-start' flexDirection='column'>
+                <Text color='red'>Idade Minima: {idade}</Text>
                 <Text>{descricao}</Text>
             </Flex>
         </ModalBody>

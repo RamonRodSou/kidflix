@@ -33,11 +33,42 @@ const VideosSec = styled.div`
   cursor:grab;
   width:100%;
 
-
   @media (min-width: 1024px) {
     
     margin-bottom: 4rem;
   }
+`;
+const ProdutoContainer = styled.div`
+
+  max-width: 115px;
+  max-height: 300px; 
+
+  @media (min-width: 450px) {
+
+    max-width: 135px;
+  }
+
+  @media (min-width: 530px) {
+
+    max-width: 165px;
+  }
+
+  @media (min-width: 650px) {
+
+    max-width: 190px;
+  }
+
+  
+  @media (min-width: 768px) {
+
+    max-width: 210px;
+  }
+
+  @media (min-width: 1024px) {
+      
+  max-width: 250px;
+  }
+  
 `;
 const TituloSec = styled.h1`
 
@@ -58,27 +89,37 @@ const TituloSec = styled.h1`
   }
 `;
 const VideoProduto = styled.div`
-  width:90px;
-  min-width:90px;
+
   position:relative;
   margin-bottom: 1rem;
   padding: 0.5rem;
 
-  @media (min-width: 768px) {
-    
-    width:150px;
-    min-width:150px;
+  @media (min-width: 450px) {
+
+    height: 160px;
+    min-height: 160px;
+  }
+
+
+  @media (min-width: 530px) {
+
+
     height: 200px;
     min-height: 200px;
+  }
+
+  @media (min-width: 768px) {
     
+    width:190px;
+    min-width:190px;
   }
 
   @media (min-width: 1024px) {
     
-    width:250px;
-    min-width:250px;
+    width: 100%;
     height: 300px;
     min-height: 300px;
+    
 
   }
 
@@ -87,7 +128,7 @@ const ImgVideo = styled.img`
   
   min-width:100%;
   min-height:100%;
-  height:120px;
+  height:130px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   pointer-events:none;
@@ -185,14 +226,6 @@ export default function Categoria () {
       padding:'0 1rem',
       overflow: 'hidden',
     };
-    const settings = {
-      dots: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: videosNaTela,
-      slidesToScroll: 2,
-      arrows: false,
-    };
     
     const applyResponsiveStyles = () => {
 
@@ -248,14 +281,26 @@ export default function Categoria () {
               <NavLink style={VerTudo}  to={categoria.categoriaName} >Ver Tudo</NavLink>
             </Flex>
 
-            <Slider {...settings} style={SliderStyled}>
+            <Slider       
+                  style={SliderStyled}
+                  dots= {true}
+                  infinite= {true}
+                  speed= {500}
+                  slidesToShow =  {Math.min(
+                    produtos.filter((produto) => produto.categoria === categoria.categoriaName).length,
+                    videosNaTela
+                  )}
+                  slidesToScroll={2}
+                  arrows= {false}
+              >
               {produtos
                 .filter((produto) => produto.categoria === categoria.categoriaName)
                 .map((produto) => (
-                  <VideoProduto key={produto.id}>
+                  <ProdutoContainer key={produto.id}>
+                  <VideoProduto>
                     <ImgVideo src={produto.img} alt={produto.name} />
                       <ChakraProvider>
-                        <AbrirModalDescricao descricao={produto.descricao} name={produto.name}>
+                        <AbrirModalDescricao descricao={produto.descricao} name={produto.name} idade={produto.idade}>
                           <IconWrapper>
                             <InfoIcon color="disabled"/>
                           </IconWrapper>
@@ -268,6 +313,7 @@ export default function Categoria () {
                       </ChakraProvider>
                     <TituloVideo>{produto.name}</TituloVideo>
                   </VideoProduto>
+                  </ProdutoContainer>
                 ))}
             </Slider >
           </VideosSec>

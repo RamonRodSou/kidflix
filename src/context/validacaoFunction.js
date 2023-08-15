@@ -15,3 +15,9 @@ export function isValidName(name) {
     return youtubeRegex.test(url);
   }
   
+  export function isValidIdade(idade) {
+    const minLength = 1;
+    const maxLength = 2;
+    const idadeLength = idade.trim().length;
+    return idadeLength >= minLength && idadeLength <= maxLength;
+  }
