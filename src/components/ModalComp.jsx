@@ -31,6 +31,8 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
 
     const [categoria, setCategoria] = useState(dataEdit.categoria || "");
     const [categoriaName, setCategoriaName] = useState(dataEdit.categoria || "");
+    const [categoriaImg, setCategoriaImg] = useState(dataEdit.categoria || "");
+ 
 
     const [isVisible, setIsVisible] = useState(true);
     const [notVisible, setNotVisible] = useState(false);
@@ -121,6 +123,14 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
               isValid = false;
         }
 
+        if (!categoriaImg) {
+            newErrorMessages.categoriaImg = "Campo obrigatório.";
+            isValid = false;
+        } else if (!isValidImageUrl(categoriaImg)) {
+            newErrorMessages.categoriaImg = "URL de imagem inválida.";
+            isValid = false;
+        }
+
         setErrorMessages(newErrorMessages);
         return isValid
   
@@ -153,6 +163,7 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
             
         const dadosCategoria = {
             categoriaName: categoriaName,
+            categoriaImg: categoriaImg,
         }
 
         axios.post(urlCategoria, dadosCategoria)
@@ -319,13 +330,27 @@ export default function ModalComp ({dataEdit,isOpen,onClose}) {
                                     type="text"
                                     value={categoriaName}
                                     placeholder="Nova Categoria"
-                                    onChange={(event) => setCategoriaName(event.target.value)}
+                                    onChange={(event) => setCategoriaName(event.target.value)} 
                                 />
                             {errorMessages.categoriaName && (
                                 <Text color="red" fontSize="sm">
                                 {errorMessages.categoriaName}
                                 </Text>
                             )}
+                            </Box>
+                            <Box>
+                                <FormLabel>Capa Categoria </FormLabel>
+                                <Input 
+                                    type="url"
+                                    value={categoriaImg}
+                                    placeholder="Link da imagem para capa da categoria"
+                                    onChange={(event) => setCategoriaImg(event.target.value)}
+                                />
+                                {errorMessages.categoriaImg && (
+                                    <Text color="red" fontSize="sm">
+                                    {errorMessages.categoriaImg}
+                                    </Text>
+                                )}
                             </Box>
                         </FormControl>}
                     </ModalBody>

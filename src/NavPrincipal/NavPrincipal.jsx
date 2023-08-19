@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { ChakraProvider, Flex, Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
+import { ChakraProvider, Flex, Menu, MenuButton, Button, MenuList, MenuItem, Image } from "@chakra-ui/react";
 import AbrirModal from "../AbrirModal/AbrirModal";
 import { NavLink } from "react-router-dom";
 import useGetVideo from "../Hooks/useGetVideo";
@@ -11,6 +11,7 @@ import { IconContext } from "react-icons";
 export function Navegacao () {
   const categoriasData = useGetVideo(urlCategoria);
   const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
+
   const [showMenu, setShowMenu] = useState(false);
 
   
@@ -33,6 +34,10 @@ const styles = {
   textAlign: "center"
 };
 
+const hoverStyles = {
+  backgroundColor: "rgba(0,0,0,0.3)",
+};
+
   if (loadingCategorias) {
     return <div>Loading...</div>;
   }
@@ -45,22 +50,39 @@ const styles = {
     setShowMenu(!showMenu);
   };
 
-  const categoriasExibicao = categorias.slice(0, 4);
+  const categoriasExibicao = categorias.slice(0, 100);
 
   if (categorias.length > 4) {
     return (
-      <Flex alignItems="center" bg='#fff'>
+      <Flex alignItems="center" color='#FFF'>
         {/* Renderiza o ícone de menu */}
         <IconContext.Provider value={{ size: "3rem" }}/>
 
         {/* Renderiza o menu com os links das categorias */}
-        <Menu isLazy bg='#fff'>
-          <MenuButton as={Button} ml="4">
-            Categorias
+        <Menu isLazy >
+          <MenuButton as={Button} ml="4" aria-label='Options' variant='outline'>
+             <IoIosMenu  />
           </MenuButton>
-          <MenuList>
+          <MenuList bg='#fff'color='#000' width='200px' 
+>
+  {/* Tem que fazer uma barra de rolagem no scrooll, pq quando dar scrool mesmo em cima do menu, ele ta descendo a pagina. */}
             {categoriasExibicao.map((categoria) => (
-              <MenuItem key={categoria.id} as={NavLink} to={`/${categoria.categoriaName}`}>
+              
+              <MenuItem 
+                  fontSize='1.5rem'
+                  color='#660000'
+                  key={categoria.id} 
+                  as={NavLink} 
+                  to={`/${categoria.categoriaName}`}
+                  _hover={hoverStyles}
+              >
+                  <Image
+                    boxSize='2.5rem'
+                    borderRadius='full'
+                    src={categoria.categoriaImg}
+                    alt={categoria.name}
+                    mr='12px'
+                  />
                 {categoria.categoriaName}
               </MenuItem>
             ))}

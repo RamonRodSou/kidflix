@@ -2,13 +2,32 @@ import React, { useState } from "react";
 import YouTube from "react-youtube";
 import { Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody } from "@chakra-ui/react";
 import ResponsiveStyle from "../Hooks/useEffect";
+import { useRef } from "react";
 
 
 export default function ModalVideo ({ isOpen, onClose, videoId  }) {
 
   const [widthResponse, setWidthResponse] = useState('90%')
   // const [heighthResponse, setHeightResponse] = useState('90%')
+  const playerRef = useRef(null);
 
+  const handleOnPlay = (event) => {
+    const player = event.target;
+    playerRef.current = player;
+
+    const videoDuration = player.getDuration();
+    const interval = setInterval(() => {
+      const currentTime = player.getCurrentTime();
+      const timeRemaining = videoDuration - currentTime;
+
+      if (timeRemaining <= 5) {
+        clearInterval(interval);
+        onClose();
+      }
+    }, 1000);
+  };
+
+  
   const opts = {
     width: "100%",
     height:"400px",
@@ -59,7 +78,11 @@ export default function ModalVideo ({ isOpen, onClose, videoId  }) {
         <ModalBody margin='0' padding='0'>
           <YouTube 
               videoId={videoId}  
-              opts={opts}/>
+              opts={opts}
+              onPlay={handleOnPlay}
+              onEnd={onClose}
+
+          />
               
         </ModalBody>
       </ModalContent>

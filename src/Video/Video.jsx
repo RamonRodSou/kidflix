@@ -46,7 +46,6 @@ const VideoProduto = styled(motion.div)`
     }
 
 `;
-
 const ImgVideo = styled.img`
     
   min-width:100%;
@@ -56,8 +55,7 @@ const ImgVideo = styled.img`
   border-top-right-radius: 5px;
   pointer-events:none;
     
-`;
-
+`; 
 const TituloVideo = styled.p`
   position: relative;
   bottom:0 ;

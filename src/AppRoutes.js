@@ -13,7 +13,6 @@ import useGetVideo from "./Hooks/useGetVideo";
 export default function AppRoutes() {
 
   const categoriasData = useGetVideo(urlCategoria);
-
   const { data: categorias, loading: loadingCategorias, error: errorCategorias } = categoriasData;
 
   if (loadingCategorias) {
