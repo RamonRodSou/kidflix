@@ -70,27 +70,9 @@ const Titulo = styled.p`
       }
 `;
 
-const AssitirVideo = styled.div`
-
-    position: relative;
-    height: 0;
-
-    top:-3rem;
-    left:-1rem;
-
-    color: #ffffff;
-
-    display:flex;
-    align-items: center;
-    justify-content: flex-end;
-
-`;
-
 export function Banner () {
 
   const produtosData = useGetVideo(urlProduto);
-
-
   const { data: produtos, loading: loadingProdutos, error: errorProdutos } = produtosData;
 
   if (loadingProdutos) {
@@ -100,14 +82,6 @@ export function Banner () {
   if (errorProdutos) {
     return <div>Error fetching data.</div>;
   }
-
-//  const getYouTubeID = (url) => {
-//     const regex = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]{11})/;
-//     const match = url.match(regex);
-  
-//     return match ? match[1] : "";
-
-//   };
 
   const settings = {
     dots: true,
@@ -126,29 +100,14 @@ export function Banner () {
     return (
         <VideoBanner>
             <BannerContainer>
-                {/* <BannerInicial src={ImgBanner} alt={ImgBanner} /> */} 
                 <Slider {...settings}>
 
              { produtos.map
              ((produto) => (
-                 <BannerDiv key={produto.id}>
+                <BannerDiv key={produto.id}>
                   <BannerGradient />
                     <BannerInicial src={produto.img} alt={produto.name} />
-                    <AssitirVideo>
-                      {/* <ChakraProvider>
-                        <AbrirModalVideo videoId={getYouTubeID(produto.video)} videoUrl={produto.id}>
-                          <Button 
-                                  p="0.2rem 0.3rem" 
-                                  bg="rgb(255, 0, 0)" 
-                                  borderRadius="2px"
-                                  color="#fff"
-                          >
-                            Assistir
-                          </Button>
-                        </AbrirModalVideo>
-                      </ChakraProvider> */}
-                    </AssitirVideo>
-                  </BannerDiv>
+                </BannerDiv>
                 )) }
 
                 </Slider>

@@ -36,7 +36,6 @@ export default function AppRoutes() {
                 element={<Categoria categorias={categorias} />}
               />
             </Route>
-            {/* Mapear as rotas para cada categoria */}
             {categorias.map((categoria) => (
               <Route
                 key={categoria.id}
